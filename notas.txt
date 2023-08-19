@@ -1,0 +1,86 @@
+inicio
+
+open
+close read
+write
+
+malloc
+free
+
+perror
+strerror
+
+exit
+
+LIBS
+math -lm
+
+ft_printf
+
+TASKS
+documentarme de la minilib
+. window creation
+. drawing toll
+. half ass image function 
+. event management system
+
+qué es X-Window, que es teamViewer
+hay algo que hacer con macOS: registrar nuestra aplicacion al macOS sistema grafico
+
+INSTALACION MINILIB-X
+COMPILACION EN MAC
+
+1. teniendo mlx source en un directorio 'mlx' en el raiz
+	. en el makefile
+	. en la receta de objetos
+	. %.o: %.c
+		$(CC) -Imlx -c $< -o $@
+	. en la receta de binarios
+		$(NAME): $(OBJ)
+			$(CC) $(OBJ) -Lmlx -lmlx -framework OpenGL AppKit -o $(NAME)
+	. se requiere libmlx.dylib en el mismo directorio que el build target ya que es una libreria dinamica (INVESTIGAR LIBRERIA DINAMICA)
+
+COMPILACION EN LINUX
+Codam provided zip
+Version de mlx compatible con linux
+
+usar memmory magic difiere como objetos se implementan en arquitecturas
+unzip mlx en un nuevo directorio en el root del proyecto > mlx_linux
+
+requiere 
+xorg
+x11
+zlib
+instalar las dependencias
+xort
+libxext-dev
+zlib1g-dev
+
+[[[commando]]]:
+sudo apt-get update && sudo apt-get install xorg libxext-dev zlib1g-dev libbsd-dev
+
+ejecutar el script configure en el root del repositorio dado
+https://harm-smits.github.io/42docs/libs/minilibx/getting_started.html
+
+https://github.com/codam-coding-college/MLX42
+
+
+
+op1. Agregar get_next_line a la libft
+op2. Agregar get_next_line como segunda libreria
+
+crear el makefile
+crear estructura de archivos
+crear estructura de datos
+	1. archivo
+	2. mapa dinamico
+		1. personajes
+		2. entidades
+		3. teclas activas
+	3. juego
+		0. menu
+		1. ventana
+		2. movimientos
+		3. estado
+
+
