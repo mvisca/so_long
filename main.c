@@ -6,8 +6,13 @@ int	main(void)
 	void	*win;
 
 	mlx = mlx_init();
-	win = mlx_new_window(mlx, 10 * 32, 10 * 32, "HOLA");
-	mlx_loop(mlx);
+	win = mlx_new_window(mlx, 500, 500, "HOLA");
+	int i = 1;
+	while (i < 100)
+	{
+		mlx_pixel_put(mlx, win, 100, i, 0xFFFF00);
+		mlx_pixel_put(mlx, win, i++, 100, 0xFF00FF);
+	}
 	mlx_loop(mlx);
 	//mlx_destroy(mlx);
 }
