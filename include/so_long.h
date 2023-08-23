@@ -1,6 +1,13 @@
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
+// Librerías requeridas
+# include <unistd.h>    // open(), read(), write(), close()
+# include <stdlib.h>    // malloc(), free(), exit()
+# include <stdio.h>     // perror()
+# include <string.h>    // strerror()
+
+// Selecciona el header para MacOS o Linux
 # ifdef __APPLE__
 #  include "../mlx/minilibx/mlx.h"
 # elif __linux__
@@ -9,7 +16,8 @@
 #  error "Sistema opeartivo no compatible"
 # endif
 
-# include <unistd.h>
+# include "sl_types.h" // Tipos de datos customizados
+
 
 #endif
 
