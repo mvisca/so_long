@@ -21,7 +21,7 @@ else
 endif
 
 all: $(NAME)
-	$(CC) $(SRC) $(OSFLAGS) -o $@
+	$(CC) $(SRC) $(OSFLAGS) -o $<
 
 test:
 	printf "$(OSFLAGS)"
