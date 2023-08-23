@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 12:39:38 by mvisca            #+#    #+#             */
-/*   Updated: 2023/08/23 13:01:58 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/08/23 13:06:55 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@ typedef enum e_cell_def
 	wall,
 	collectible,
 	exit,
-	player_still,
-	player_up,
-	player_down,
-	player_left,
-	player_right
+	p_still,
+	p_up,
+	p_down,
+	p_left,
+	p_right
 }   t_cell;
 
 typedef struct s_map
@@ -38,9 +38,9 @@ typedef struct s_map
 typedef struct s_img
 {
 	void		*img_ptr;
-	int			*img_data;
-	int			*img_size;
-	int			*img_bpp;
+	int			img_data;
+	int			img_size;
+	int			img_bpp;
 }	t_img;
 
 typedef struct s_game

@@ -17,7 +17,7 @@
 # endif
 
 # include "sl_types.h" // Tipos de datos customizados
-
+# include "../libft/include/libft.h" // Libft functions & ft_printf
 
 #endif
 
