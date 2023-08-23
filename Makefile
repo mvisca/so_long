@@ -4,7 +4,7 @@ NAME	:=	so_long
 
 #---------- INGREDIENTS -----------------#
 
-SRC		:=	so_long.c
+SRC		:=	src/so_long.c
 
 #---------- INGREDIENTS -----------------#
 
@@ -24,4 +24,6 @@ all: $(NAME)
 	$(CC) $(SRC) $(OSFLAGS) -o $<
 
 test:
-	printf "$(OSFLAGS)"
+	$(CC) src/lib_test.c $(OSFLAGS) -o test
+
+.PHONY: test

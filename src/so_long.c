@@ -6,17 +6,17 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 11:37:00 by mvisca            #+#    #+#             */
-/*   Updated: 2023/08/23 10:36:28 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/08/23 17:03:39 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../include/so_long.h"
+
 int main(int ac, char **av)
 {
-    // validar que se dan los argumentos adecuados
+    // validar que se da un argumento de programa
     if (ac == 2)
     {
-        
-        
         // must take de av[1] and open as filename
         // open filname
         
