@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 19:52:40 by mvisca            #+#    #+#             */
-/*   Updated: 2023/08/24 14:47:05 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/08/24 15:20:57 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,15 @@ void    error_and_exit(int msj, char *str, t_game *g)
 	int i;
 	if (msj)
 		ft_printf("%s", str);
-//	if (g->win)
+	if (g->win)
 		mlx_destroy_window(g->mlx, g->win);
-//	if (g->mlx)
+	if (g->mlx)
 		free(g->mlx);
-//	if (g->map)
+	if (g->map->tiles)
 		free_map(g);
-//	if (g->img)
+	if (g->map)
+		free(g->map);
+	if (g->img)
 		free_img(g);
 	if (msj)
 		exit(EXIT_FAILURE);
@@ -44,7 +46,6 @@ void	free_map(t_game *g)
 		i++;
 	}
 	free(g->map->tiles);
-	free(g->map);
 }
 
 void	free_img(t_game *g)

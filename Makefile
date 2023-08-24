@@ -31,16 +31,20 @@ LIBFTFLAGS	:=	-Llibft -lft -Ilibft/include
 #---------- OS SPECIFIC FLAGS ----------#
 
 
-all: $(LIBFT) $(NAME)
+all: callforlib $(NAME)
 
-$(NAME):
+$(NAME): $(LIBFT)
 	$(CC) $(SRC) $(OSFLAGS) $(LIBFTFLAGS) $(DEBUG) -o $(NAME)
 
 $(LIBFT):
-	$(MAKE) -C $(LIBFT)
+	$(MAKE) -C libft/
+
+callforlib:
+	$(MAKE) -C libft/
 
 fclean:
 	rm -rf so_long test
+	$(MAKE) -C libft/ fclean
 
 re: fclean
 	$(MAKE) -C .

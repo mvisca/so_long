@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 18:08:53 by mvisca            #+#    #+#             */
-/*   Updated: 2023/08/24 14:48:37 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/08/24 15:53:45 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@ void    sl_init(char *filename, t_game *g)
 t_game	*sl_game_init(t_game *g)
 {
 	g->mlx = mlx_init();
-//	if (!g->mlx)
-//		error_and_exit(TRUE, "Error connectig display\n", g);
+	if (!g->mlx)
+			error_and_exit(TRUE, "Error connectig display\n", g);
 	g->win = mlx_new_window(g->mlx, g->map->c *32, g->map->r *32, "So Long");
 	if (!g->win)
 		error_and_exit(TRUE, "Error creating window\n", g);
-//	sl_load_assets(g);
+	sl_load_assets(g);
 	g->turns = 0;
 }
 
@@ -40,13 +40,13 @@ void	sl_load_assets(t_game *g)
 {
 	int	i;
 
-	g->img = (t_img **) malloc (sizeof(t_img *) * 5);
+	g->img = (t_slimg **) malloc (sizeof(t_slimg *) * 5);
 	i = 0;
 	if (!g->img)
 		error_and_exit(TRUE, "Error loading images\n", g);
 	while (i < 5)
 	{
-		g->img[i] = (t_img *) malloc (sizeof(t_img));
+		g->img[i] = (t_slimg *) malloc (sizeof(t_slimg));
 		if (!g->img[i])
 			error_and_exit(TRUE, "Error loading images\n", g);
 		i++;

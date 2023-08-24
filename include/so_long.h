@@ -13,8 +13,10 @@
 // Selecciona el header de minilib para MacOS o Linux
 # ifdef __APPLE__
 #  include "../mlx/minilibx/mlx.h"
+#  include "../mlx/minilibx/mlx_int.h"
 # elif __linux__
 #  include "../mlx/minilibx-linux/mlx.h"
+#  include "../mlx/minilibx-linux/mlx_int.h"
 # else
 #  error "Sistema opeartivo no compatible"
 # endif

@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 11:17:49 by mvisca            #+#    #+#             */
-/*   Updated: 2023/08/24 14:18:38 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/08/24 15:25:31 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,6 @@ t_map   *sl_map_init(char *filename, t_game *g)
     if (!g->map)
         error_and_exit(TRUE, "Error allocating map", g);
     g->map->tiles = sl_load_map(filename, g);
-	int aa = 0;
-	ft_printf("Ini\n");
-	while (aa < g->map->r)
-		ft_printf("%s", g->map[aa++]);
-	ft_printf("Fin\n");
     if (!g->map->tiles)
         error_and_exit(TRUE, "Error loading map", g);
     g->map->r = sl_get_map_xy("rows", 1, g);
@@ -40,14 +35,16 @@ char	**sl_load_map(char *filename, t_game *g)
 	char	*str_map;
 	char	*aux;
 	int		fd;
-	char	**test;
 
 	buffer[100] = '\0';
 	bytes_read = 1;
 	str_map = ft_strdup("");
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
-		error_and_exit(TRUE, "Error opening file", g);
+	{
+		ft_printf("Error opening file\n");
+		exit(EXIT_FAILURE);
+	}
 	while (bytes_read > 0)
 	{
 		bytes_read = read(fd, buffer, 100);
@@ -61,17 +58,6 @@ char	**sl_load_map(char *filename, t_game *g)
 			error_and_exit(TRUE, "Error reading file", g);
 	}
 	close (fd);
-	test = ft_split(str_map, '\n');
-	int aa = 0;
-	ft_printf("Ini2\n");
-	while (test[aa])
-		ft_printf("%s\n", test[aa++]);
-	ft_printf("Fin2\n");
-	ft_printf("Ini3\n");
-		ft_printf("%s\n", test[2]);
-	ft_printf("Fin3\n");
-
-
 	return (ft_split(str_map, '\n'));
 }
 

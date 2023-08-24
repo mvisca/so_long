@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 12:39:38 by mvisca            #+#    #+#             */
-/*   Updated: 2023/08/24 14:37:09 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/08/24 15:54:23 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ typedef struct s_map
 	int			c;
 }	t_map;
 
-typedef struct s_img
+typedef struct s_slimg
 {
 	void		*img_ptr;
 	int			*img_data;
@@ -42,14 +42,14 @@ typedef struct s_img
 	int			img_endian;
 	int			w;
 	int			h;
-}	t_img;
+}	t_slimg;
 
 typedef struct s_game
 {
 	void		*mlx;
 	void		*win;
 	t_map		*map;
-	t_img		**img;
+	t_slimg		**img;
 	int			img_w; // for test
 	int			img_h; // for test
 	int			turns;
