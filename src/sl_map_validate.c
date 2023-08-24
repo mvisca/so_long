@@ -6,18 +6,20 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 20:10:23 by mvisca            #+#    #+#             */
-/*   Updated: 2023/08/25 00:49:50 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/08/25 01:05:09 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
+static int	sl_same_len_cols(t_game *g);
 static int	sl_map_wall_borders(t_game *g);
 static int	sl_proper_elements(t_game *g);
+static int	sl_possible_to_win(t_game *g);
 
 t_map    *sl_map_validate(t_game *g)
 {
-	if (g->map->c == g->map->r)
+	if (g->map->c == g->map->r || !sl_same_len_cols(g))
 		error_and_exit(TRUE, "Map dimensions error\n", g);
 
 	if (!sl_map_wall_borders(g))
@@ -35,6 +37,22 @@ t_map    *sl_map_validate(t_game *g)
 	// que todos los colls y goal esten al alcance de p
 	
 	return (g->map);
+}
+
+static int	sl_same_len_cols(t_game *g)
+{
+	int	r;
+	int	len;
+
+	r = 0;
+	len = ft_strlen(g->map->tiles[0]);
+	while (r < g->map->r)
+	{
+		if (len != ft_strlen(g->map->tiles[r]))
+			return (FALSE);
+		r++;
+	}
+	return (TRUE);
 }
 
 static int	sl_map_wall_borders(t_game *g)
@@ -92,5 +110,10 @@ static int	sl_proper_elements(t_game *g)
 		r++;
 	}
 	ft_printf("c=%d e=%d p=%d\n", g->map->coll, g->map->goal, g->map->pyr);
+	return (TRUE);
+}
+
+static int	sl_possible_to_win(t_game *g)
+{
 	return (TRUE);
 }
