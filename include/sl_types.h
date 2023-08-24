@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 12:39:38 by mvisca            #+#    #+#             */
-/*   Updated: 2023/08/24 15:54:23 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/08/24 16:56:46 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,9 @@ typedef struct s_map
 	char		**tiles;
 	int			r;
 	int			c;
+	int			pyr;
+	int			coll;
+	int			goal;
 }	t_map;
 
 typedef struct s_slimg

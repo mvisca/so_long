@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 11:17:49 by mvisca            #+#    #+#             */
-/*   Updated: 2023/08/24 15:25:31 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/08/24 16:32:15 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,13 @@ t_map   *sl_map_init(char *filename, t_game *g)
 {
     g->map = (t_map *) malloc (sizeof(t_map));
     if (!g->map)
-        error_and_exit(TRUE, "Error allocating map", g);
+        error_and_exit(TRUE, "Map alloc error\n", g);
     g->map->tiles = sl_load_map(filename, g);
     if (!g->map->tiles)
-        error_and_exit(TRUE, "Error loading map", g);
+        error_and_exit(TRUE, "Map load error\n", g);
     g->map->r = sl_get_map_xy("rows", 1, g);
     g->map->c = sl_get_map_xy("cols", 0, g);
+	g->map = sl_map_validate(g);
     return (g->map);
 }
 
@@ -35,6 +36,7 @@ char	**sl_load_map(char *filename, t_game *g)
 	char	*str_map;
 	char	*aux;
 	int		fd;
+	char	**res;
 
 	buffer[100] = '\0';
 	bytes_read = 1;
@@ -42,23 +44,25 @@ char	**sl_load_map(char *filename, t_game *g)
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
 	{
-		ft_printf("Error opening file\n");
+		ft_printf("Open file erro\n");
 		exit(EXIT_FAILURE);
 	}
 	while (bytes_read > 0)
 	{
 		bytes_read = read(fd, buffer, 100);
 		if (bytes_read < 0)
-			error_and_exit(TRUE, "Error reading file", g);
+			error_and_exit(TRUE, "Read file error\n", g);
 		buffer[bytes_read] = '\0';
 		aux = str_map;
 		str_map = ft_strjoin(str_map, buffer);
 		free(aux);
 		if (!str_map)
-			error_and_exit(TRUE, "Error reading file", g);
+			error_and_exit(TRUE, "Read file error\n", g);
 	}
 	close (fd);
-	return (ft_split(str_map, '\n'));
+	res = ft_split(str_map, '\n');
+	free(str_map);
+	return (res);
 }
 
 int     sl_get_map_xy(char *info, int option, t_game *g)

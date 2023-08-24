@@ -1,19 +1,98 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sl_validate_map.c                                  :+:      :+:    :+:   */
+/*   sl_map_validate.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 20:10:23 by mvisca            #+#    #+#             */
-/*   Updated: 2023/08/23 20:51:11 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/08/24 17:13:01 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-// VALIDATE MAP sl_validate_map(t_game *g);
-int    sl_validate_map(t_game *g)
+static int	sl_map_wall_borders(t_game *g);
+static int	sl_proper_elements(t_game *g);
+
+t_map    *sl_map_validate(t_game *g)
 {
-    return (1);
+	if (g->map->c == g->map->r)
+		error_and_exit(TRUE, "Map dimensions error\n", g);
+
+	if (!sl_map_wall_borders(g))
+		error_and_exit(TRUE, "Map borders error\n", g);
+
+	if (!sl_proper_elements(g))
+		error_and_exit(TRUE, "Map elements error\n", g);
+
+	// 1 p
+	// 1+ coll
+	// 1 goal
+
+	// contar colls
+
+	// que todos los colls y goal esten al alcance de p
+	
+	// que no haya caracteres no requeridos
+
+	return (g->map);
+}
+
+static int	sl_map_wall_borders(t_game *g)
+{
+	int	lst_r;
+	int	lst_c;
+	int	i;
+
+	lst_r = g->map->r;
+	lst_c = g->map->c; 
+	i = 0;
+	while (i < lst_c)
+	{
+		if (g->map->tiles[0][i] != '1')
+			return (FALSE);
+		if (g->map->tiles[lst_r - 1][i] != '1')
+			return (FALSE);
+		i++;
+	}
+	while (i < lst_r)
+	{
+		if (g->map->tiles[i][0] != '1')
+			return (FALSE);
+		if (g->map->tiles[i][lst_c - 1] != '1')
+			return (FALSE);
+		i++;
+	}
+	return (TRUE);
+}
+
+static int	sl_proper_elements(t_game *g)
+{
+	int	r;
+	int	c;
+
+	g->map->pyr = 0;
+	g->map->coll = 0;
+	g->map->goal = 0;
+	r = 0;
+	while (g->map && g->map->tiles && g->map->tiles[r])
+	{
+		c = 0;
+		while (g->map->tiles[r][c])
+		{
+			if (!ft_strchr("01CEP", g->map->tiles[r][c]))
+				return (FALSE);
+			else if (g->map->tiles[r][c] == 'C')
+				g->map->coll++;
+			else if (g->map->tiles[r][c] == 'E')
+				g->map->goal++;
+			else if (g->map->tiles[r][c] == 'P')
+				g->map->pyr++;
+			c++;
+		}
+		r++;
+	}
+	ft_printf("c=%d e=%d p=%d\n", g->map->coll, g->map->goal, g->map->pyr);
+	return (TRUE);
 }

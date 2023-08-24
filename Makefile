@@ -37,17 +37,16 @@ $(NAME): $(LIBFT)
 	$(CC) $(SRC) $(OSFLAGS) $(LIBFTFLAGS) $(DEBUG) -o $(NAME)
 
 $(LIBFT):
-	$(MAKE) -C libft/
+	@$(MAKE) -C libft/ --silent
 
 callforlib:
-	$(MAKE) -C libft/
+	@$(MAKE) -C libft/ --silent
 
 fclean:
 	rm -rf so_long test
-	$(MAKE) -C libft/ fclean
+	@$(MAKE) -C libft/ fclean --silent
 
-re: fclean
-	$(MAKE) -C .
+re: fclean all
 
 test:
 	$(CC) src/lib_test.c $(OSFLAGS) $(DEBUG) -o test

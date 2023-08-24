@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 11:37:00 by mvisca            #+#    #+#             */
-/*   Updated: 2023/08/24 15:47:40 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/08/24 16:11:11 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,12 @@ static void	sl_g_null(t_game *g);
 int	main(int ac, char **av)
 {
 	t_game	g;
+	char	*filename;
 
 	sl_g_null(&g);
 	if (ac == 2)
 	{
-		g.mlx = mlx_init();
+		filename = av[1];
 		sl_init(av[1], &g);
 
 		int i = 0;
