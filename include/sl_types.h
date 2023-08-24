@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 12:39:38 by mvisca            #+#    #+#             */
-/*   Updated: 2023/08/23 16:03:49 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/08/24 12:46:07 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,23 @@
 # define SL_TYPES_H
 
 # define BLOCK_SIZE 32
+# define TRUE 1
+# define FALSE 0
 
 typedef enum e_tiles
 {
 	road,
 	wall,
-	collectible,
-	exit_tile,
-	p_still,
-	p_up,
-	p_down,
-	p_left,
-	p_right
+	coll,
+	goal,
+	player
 }   t_tiles;
 
 typedef struct s_map
 {
-	t_tiles		**e_cell;
-	int			width;
-	int			height;
+	char		**tiles;
+	int			rows;
+	int			cols;
 }	t_map;
 
 typedef struct s_img
@@ -42,16 +40,18 @@ typedef struct s_img
 	int			img_size;
 	int			img_bpp;
 	int			img_endian;
-	int			img_w;
-	int			img_h;
+	int			w;
+	int			h;
 }	t_img;
 
 typedef struct s_game
 {
 	void		*mlx;
 	void		*win;
-	void		*map;
-	t_img		*img;
+	t_map		*map;
+	t_img		**img;
+	int			img_w; // for test
+	int			img_h; // for test
 	int			turns;
 }	t_game;
 

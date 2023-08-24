@@ -6,8 +6,11 @@
 # include <stdlib.h>    // malloc(), free(), exit()
 # include <stdio.h>     // perror()
 # include <string.h>    // strerror()
+# include <fcntl.h>     // O_RDONLY
+# include "sl_types.h"
+# include "../libft/include/libft.h"
 
-// Selecciona el header para MacOS o Linux
+// Selecciona el header de minilib para MacOS o Linux
 # ifdef __APPLE__
 #  include "../mlx/minilibx/mlx.h"
 # elif __linux__
@@ -16,8 +19,24 @@
 #  error "Sistema opeartivo no compatible"
 # endif
 
-# include "sl_types.h" // Tipos de datos customizados
-# include "../libft/include/libft.h" // Libft functions & ft_printf
+// sl_init.c
+void    sl_init(char *filename, t_game *g);
+t_game  *sl_game_init(t_game *g);
+void	sl_load_assets(t_game *g);
+void	*sl_ftoi(void *mlx, char *file, int *w, int* h);
+
+// sl_map_init.c
+t_map   *sl_map_init(char *filename, t_game *g);
+char    **sl_load_map(char *filename, t_game *g);
+int     sl_get_map_xy(char *info, int option, t_game *g);
+
+// sl_map_validate.c
+int    sl_validate_map(t_game *g);
+
+// sl_utils.c
+void    error_and_exit(int msj, char *str, t_game *g);
+void	free_map(t_map *map);
+void	free_img(t_img **img);
 
 #endif
 

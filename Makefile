@@ -4,13 +4,19 @@ NAME	:=	so_long
 
 #---------- INGREDIENTS -----------------#
 
-SRC		:=	src/so_long.c
+SRC		:=	src/so_long.c \
+			src/sl_init.c \
+			src/sl_utils.c \
+			src/sl_map_init.c \
+			src/sl_map_validate.c
+
+LIBFT	:=	libft
+
+DEBUG	:=	-g -fsanitize=address
 
 #---------- INGREDIENTS -----------------#
 
 CC		:=	cc
-
-#---------- OS SPECIFIC FLAGS ----------#
 
 ifeq ($(shell uname -s),Darwin)  # macOS
 	OSFLAGS := -Lmlx/minilibx -lmlx -Imlx/minilibx -framework OpenGl -framework AppKit
@@ -20,10 +26,26 @@ else
 	$(error Sistema operativo no compatible)
 endif
 
-all: $(NAME)
-	$(CC) $(SRC) $(OSFLAGS) -o $<
+LIBFTFLAGS	:=	-Llibft -lft -Ilibft/include
+
+#---------- OS SPECIFIC FLAGS ----------#
+
+
+all: $(LIBFT) $(NAME)
+
+$(NAME):
+	$(CC) $(SRC) $(OSFLAGS) $(LIBFTFLAGS) $(DEBUG) -o $(NAME)
+
+$(LIBFT):
+	$(MAKE) -C $(LIBFT)
+
+fclean:
+	rm -rf so_long test
+
+re: fclean
+	$(MAKE) -C .
 
 test:
-	$(CC) src/lib_test.c $(OSFLAGS) -o test
+	$(CC) src/lib_test.c $(OSFLAGS) $(DEBUG) -o test
 
-.PHONY: test
+.PHONY: fclean re test
