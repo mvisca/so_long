@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+         #
+#    By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/31 17:14:27 by mvisca            #+#    #+#              #
-#    Updated: 2023/08/10 17:30:40 by mvisca-g         ###   ########.fr        #
+#    Updated: 2023/08/24 14:21:33 by mvisca           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -126,6 +126,8 @@ MAKEFLAGS	+= --no-print-directory
 #---------------------------------------#
 
 all: $(NAME)
+
+bonus: all
 
 $(NAME): $(OBJS)
 	@$(AR) $@ $(OBJS)

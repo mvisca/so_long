@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 11:37:00 by mvisca            #+#    #+#             */
-/*   Updated: 2023/08/24 14:04:37 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/08/24 14:48:53 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,15 @@ int	main(int ac, char **av)
 	{
 		sl_init(av[1], &g);
 		int i = 0;
-		ft_printf("rows = %d\n", g.map->rows);
-		ft_printf("cols = %d\n", g.map->cols);
-		while (i < g.map->rows)
+		ft_printf("rows = %d\n", g.map->r);
+		ft_printf("cols = %d\n", g.map->c);
+		while (i < g.map->r)
 		{
 			ft_printf("main: %s\n", g.map->tiles[i]);
 			i++;
 		}
-		mlx_loop(g.mlx);
 		ft_printf("ok!\n");
 	}
+	mlx_loop(g.mlx);
 	error_and_exit(FALSE, "", &g);
 }

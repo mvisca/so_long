@@ -35,8 +35,8 @@ int    sl_validate_map(t_game *g);
 
 // sl_utils.c
 void    error_and_exit(int msj, char *str, t_game *g);
-void	free_map(t_map *map);
-void	free_img(t_img **img);
+void	free_map(t_game *g);
+void	free_img(t_game *g);
 
 #endif
 

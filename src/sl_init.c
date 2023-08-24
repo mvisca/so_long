@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 18:08:53 by mvisca            #+#    #+#             */
-/*   Updated: 2023/08/24 12:49:45 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/08/24 14:48:37 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ t_game	*sl_game_init(t_game *g)
 	g->mlx = mlx_init();
 //	if (!g->mlx)
 //		error_and_exit(TRUE, "Error connectig display\n", g);
-	g->win = mlx_new_window(g->mlx, g->map->rows * BLOCK_SIZE, g->map->cols *BLOCK_SIZE, "So Long");
+	g->win = mlx_new_window(g->mlx, g->map->c *32, g->map->r *32, "So Long");
 	if (!g->win)
 		error_and_exit(TRUE, "Error creating window\n", g);
 //	sl_load_assets(g);
@@ -55,7 +55,7 @@ void	sl_load_assets(t_game *g)
 	g->img[wall] = sl_ftoi(g->mlx, "assets/w.xpm", &g->img_w, &g->img_h);
 	g->img[coll] = sl_ftoi(g->mlx, "assets/c.xpm",&g->img_w, &g->img_h);
 	g->img[goal] = sl_ftoi(g->mlx, "assets/g.xpm",&g->img_w, &g->img_h);
-	g->img[player] = sl_ftoi(g->mlx, "assets/c.xpm", &g->img_w, &g->img_h);
+	g->img[pyr] = sl_ftoi(g->mlx, "assets/c.xpm", &g->img_w, &g->img_h);
 }
 
 void	*sl_ftoi(void *mlx, char *file, int *w, int* h)
@@ -65,5 +65,3 @@ void	*sl_ftoi(void *mlx, char *file, int *w, int* h)
 	img = mlx_xpm_file_to_image(mlx, file, w, h);
 	return (img); 
 }
-
-// VALIDATE MAP sl_validate_map(t_game *g);

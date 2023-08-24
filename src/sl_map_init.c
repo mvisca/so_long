@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 11:17:49 by mvisca            #+#    #+#             */
-/*   Updated: 2023/08/24 13:15:07 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/08/24 14:18:38 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,13 @@ t_map   *sl_map_init(char *filename, t_game *g)
     g->map->tiles = sl_load_map(filename, g);
 	int aa = 0;
 	ft_printf("Ini\n");
-	while (aa < g->map->rows)
+	while (aa < g->map->r)
 		ft_printf("%s", g->map[aa++]);
 	ft_printf("Fin\n");
     if (!g->map->tiles)
         error_and_exit(TRUE, "Error loading map", g);
-    g->map->rows = sl_get_map_xy("rows", 1, g);
-    g->map->cols = sl_get_map_xy("cols", 0, g);
+    g->map->r = sl_get_map_xy("rows", 1, g);
+    g->map->c = sl_get_map_xy("cols", 0, g);
     return (g->map);
 }
 
@@ -55,7 +55,7 @@ char	**sl_load_map(char *filename, t_game *g)
 			error_and_exit(TRUE, "Error reading file", g);
 		buffer[bytes_read] = '\0';
 		aux = str_map;
-		str_map = ft_strjoin(aux, buffer);
+		str_map = ft_strjoin(str_map, buffer);
 		free(aux);
 		if (!str_map)
 			error_and_exit(TRUE, "Error reading file", g);

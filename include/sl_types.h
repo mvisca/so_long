@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 12:39:38 by mvisca            #+#    #+#             */
-/*   Updated: 2023/08/24 12:46:07 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/08/24 14:37:09 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,14 @@ typedef enum e_tiles
 	wall,
 	coll,
 	goal,
-	player
+	pyr
 }   t_tiles;
 
 typedef struct s_map
 {
 	char		**tiles;
-	int			rows;
-	int			cols;
+	int			r;
+	int			c;
 }	t_map;
 
 typedef struct s_img
