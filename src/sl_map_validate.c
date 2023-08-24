@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 20:10:23 by mvisca            #+#    #+#             */
-/*   Updated: 2023/08/24 17:13:01 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/08/25 00:49:50 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,15 @@ t_map    *sl_map_validate(t_game *g)
 
 	if (!sl_proper_elements(g))
 		error_and_exit(TRUE, "Map elements error\n", g);
+	
+	if (g->map->goal > 1 || g->map->pyr > 1)
+		error_and_exit(TRUE, "Map player/exit error\n", g);
 
-	// 1 p
-	// 1+ coll
-	// 1 goal
-
-	// contar colls
+	if (!sl_possible_to_win(g))
+		error_and_exit(TRUE, "Map nos possible error\n", g);
 
 	// que todos los colls y goal esten al alcance de p
 	
-	// que no haya caracteres no requeridos
-
 	return (g->map);
 }
 
