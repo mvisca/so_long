@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/25 10:02:38 by mvisca            #+#    #+#             */
-/*   Updated: 2023/08/25 15:40:34 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/08/25 15:41:17 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,8 +130,3 @@ static void	sl_pathfinder(t_map **map, int pr, int pc)
 	if ((pc + 1 < (*map)->c - 1) && (!ft_strchr("X1", (*map)->tiles[pr][pc + 1])))
 		sl_pathfinder(map, pr, pc + 1);
 }
-
-// este algoritmo está mal
-// debe recorrer todo el mapa para no lo está haciendo
-// duplico el mapa ok
-// libero el mapa ok
