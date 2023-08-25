@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 18:08:53 by mvisca            #+#    #+#             */
-/*   Updated: 2023/08/25 17:48:33 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/08/25 17:51:17 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ static int		sl_valid_filename(char *filename);
 
 void    sl_init(char *filename, t_game *g)
 {
+	if (!sl_valid_filename(filename))
+		error_and_exit(TRUE, "Filename error\n", g);
 	g->mlx = mlx_init();
 	if (!g->mlx)
 		error_and_exit(TRUE, "Display error\n", g);
-	if (!sl_valid_filename(filename))
-		error_and_exit(TRUE, "Filename error\n", g);
 	g->map = sl_map_init(filename, g);
 	if (!g->map)
 		error_and_exit(TRUE, "Map error\n", g);
