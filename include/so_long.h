@@ -34,6 +34,9 @@ int		sl_get_map_xy(char *info, int option, t_game *g);
 // sl_map_validate.c
 t_map	*sl_map_validate(t_game *g);
 
+// sl_map_validate.c
+int	sl_solvable(t_game *g);
+
 // sl_utils.c
 void    error_and_exit(int msj, char *str, t_game *g);
 void	free_map(t_game *g);

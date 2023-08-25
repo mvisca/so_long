@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 20:10:23 by mvisca            #+#    #+#             */
-/*   Updated: 2023/08/25 01:05:09 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/08/25 11:48:41 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 static int	sl_same_len_cols(t_game *g);
 static int	sl_map_wall_borders(t_game *g);
 static int	sl_proper_elements(t_game *g);
-static int	sl_possible_to_win(t_game *g);
 
 t_map    *sl_map_validate(t_game *g)
 {
@@ -28,11 +27,12 @@ t_map    *sl_map_validate(t_game *g)
 	if (!sl_proper_elements(g))
 		error_and_exit(TRUE, "Map elements error\n", g);
 	
-	if (g->map->goal > 1 || g->map->pyr > 1)
-		error_and_exit(TRUE, "Map player/exit error\n", g);
+	if (g->map->goal == 0 || g->map->goal > 1 || g->map->pyr == 0 || 
+	g->map->pyr > 1 || g->map->coll == 0)
+		error_and_exit(TRUE, "Map player/exit/coll error\n", g);
 
-	if (!sl_possible_to_win(g))
-		error_and_exit(TRUE, "Map nos possible error\n", g);
+	if (!sl_solvable(g))
+		error_and_exit(TRUE, "Map not possible error\n", g);
 
 	// que todos los colls y goal esten al alcance de p
 	
@@ -110,10 +110,5 @@ static int	sl_proper_elements(t_game *g)
 		r++;
 	}
 	ft_printf("c=%d e=%d p=%d\n", g->map->coll, g->map->goal, g->map->pyr);
-	return (TRUE);
-}
-
-static int	sl_possible_to_win(t_game *g)
-{
 	return (TRUE);
 }
