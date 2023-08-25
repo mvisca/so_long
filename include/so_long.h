@@ -23,8 +23,8 @@
 
 // sl_init.c
 void    sl_init(char *filename, t_game *g);
-void	sl_load_assets(t_game *g);
-void	*sl_xpmtoi(void *mlx, char *file, int *w, int* h);
+// void	sl_load_assets(t_game *g);
+// void	*sl_xpmtoi(void *mlx, char *file, int *w, int* h);
 
 // sl_map_init.c
 t_map	*sl_map_init(char *filename, t_game *g);
@@ -35,12 +35,13 @@ int		sl_get_map_xy(char *info, int option, t_game *g);
 t_map	*sl_map_validate(t_game *g);
 
 // sl_map_validate.c
-int	sl_solvable(t_game *g);
+int	    sl_solvable(t_game *g);
 
 // sl_utils.c
 void    error_and_exit(int msj, char *str, t_game *g);
 void	free_map(t_game *g);
 void	free_img(t_game *g);
+void	sl_freemap(t_game *g, t_map **map);
 
 #endif
 

@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/25 10:02:38 by mvisca            #+#    #+#             */
-/*   Updated: 2023/08/25 15:41:17 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/08/25 17:14:44 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 static void	sl_find_pyr(t_game *g, int *pr, int *pc);
 static char	**sl_mapdup(t_game *g, t_map **map);
 static void	sl_pathfinder(t_map **map, int pr, int pc);
-static void	sl_freemap(t_game *g, t_map **map);
 
 int	sl_solvable(t_game *g)
 {
@@ -47,17 +46,6 @@ int	sl_solvable(t_game *g)
 	}
 	sl_freemap(g, &map);
 	return (TRUE);
-}
-
-static void	sl_freemap(t_game *g, t_map **map)
-{
-	int	r;
-	
-	r = 0;
-	while (r < g->map->r)
-		free((*map)->tiles[r++]);
-	free((*map)->tiles);
-	free(*map);
 }
 
 static char	**sl_mapdup(t_game *g, t_map **map)

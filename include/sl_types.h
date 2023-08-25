@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 12:39:38 by mvisca            #+#    #+#             */
-/*   Updated: 2023/08/24 16:56:46 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/08/25 17:37:46 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,11 @@ typedef struct s_map
 
 typedef struct s_slimg
 {
-	void		*img_ptr;
-	int			*img_data;
-	int			img_size;
-	int			img_bpp;
-	int			img_endian;
+	void		*ptr;
+	int			*data;
+	int			size;
+	int			bpp;
+	int			endian;
 	int			w;
 	int			h;
 }	t_slimg;

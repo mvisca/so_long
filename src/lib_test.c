@@ -4,20 +4,20 @@ int	main(void)
 {
 	void	*mlx;
 	void	*win;
-	t_img	*img1;
-	t_img	*img2;
+	t_slimg	*img1;
+	t_slimg	*img2;
 
 	mlx = mlx_init();
 	win = mlx_new_window(mlx, 320, 320, "HOLA");
 
 	// crea struct con los datos para mostrar imagen
-	img1 = (t_img *) malloc (sizeof(t_img) * 1);
-	img1->img_ptr = mlx_xpm_file_to_image(mlx, "assets/r.xpm", &img1->w, &img1->h);
-	img1->img_data = (int *)mlx_get_data_addr(img1->img_ptr, &img1->img_bpp, &img1->img_size, &img1->img_endian);
+	img1 = (t_slimg *) malloc (sizeof(t_slimg) * 1);
+	img1->ptr = mlx_xpm_file_to_image(mlx, "a/r.xpm", &img1->w, &img1->h);
+	img1->data = (int *)mlx_get_data_addr(img1->ptr, &img1->bpp, &img1->size, &img1->endian);
 
-	img2 = (t_img *) malloc (sizeof(t_img) * 1);
-	img2->img_ptr = mlx_xpm_file_to_image(mlx, "assets/g.xpm", &img2->w, &img2->w);
-	img2->img_data = (int *)mlx_get_data_addr(img2->img_ptr, &img2->img_bpp, &img2->img_size, &img2->img_endian);
+	img2 = (t_slimg *) malloc (sizeof(t_slimg) * 1);
+	img2->ptr = mlx_xpm_file_to_image(mlx, "a/g.xpm", &img2->w, &img2->w);
+	img2->data = (int *)mlx_get_data_addr(img2->ptr, &img2->bpp, &img2->size, &img2->endian);
 
 	// iteración anidada para cubrir al ventana con tiles
 	int i = 0;
@@ -25,7 +25,7 @@ int	main(void)
 	{
 		int j = 0;
 		while (j < 10)
-			mlx_put_image_to_window(mlx, win, img1->img_ptr, 32 * i, 32 * j++);
+			mlx_put_image_to_window(mlx, win, img1->ptr, 32 * i, 32 * j++);
 		i++;
 	}
 
@@ -47,7 +47,7 @@ int	main(void)
 		ex++;
 	}
 
-	mlx_put_image_to_window(mlx, win, img2->img_ptr, 32 * 7, 32 * 7);
+	mlx_put_image_to_window(mlx, win, img2->ptr, 32 * 7, 32 * 7);
 
 	mlx_loop(mlx);
 	//mlx_destroy(mlx);
