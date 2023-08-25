@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/25 10:02:38 by mvisca            #+#    #+#             */
-/*   Updated: 2023/08/25 12:45:03 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/08/25 15:40:34 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ int	sl_solvable(t_game *g)
 	map->tiles = sl_mapdup(g, &map);
 	map->coll = 0;
 	map->goal = 0;
+	map->r = g->map->r;
+	map->c = g->map->c;
 	sl_pathfinder(&map, pr, pc);
 	int i = 0;
 	while (i < g->map->r)
@@ -113,16 +115,22 @@ static void	sl_pathfinder(t_map **map, int pr, int pc)
 		(*map)->coll++;
 	else if ((*map)->tiles[pr][pc] == 'E')
 		(*map)->goal++;
+	
 	(*map)->tiles[pr][pc] = 'X';
+
 	if ((pr - 1 > 0) && (!ft_strchr("X1", (*map)->tiles[pr - 1][pc])))
 		sl_pathfinder(map, pr - 1, pc);
+
 	if ((pr + 1 < (*map)->r - 1) && (!ft_strchr("X1", (*map)->tiles[pr + 1][pc])))
 		sl_pathfinder(map, pr + 1, pc);
+
 	if ((pc - 1 > 0) && (!ft_strchr("X1", (*map)->tiles[pr][pc - 1])))
 		sl_pathfinder(map, pr, pc - 1);
+
 	if ((pc + 1 < (*map)->c - 1) && (!ft_strchr("X1", (*map)->tiles[pr][pc + 1])))
 		sl_pathfinder(map, pr, pc + 1);
 }
+
 // este algoritmo está mal
 // debe recorrer todo el mapa para no lo está haciendo
 // duplico el mapa ok
