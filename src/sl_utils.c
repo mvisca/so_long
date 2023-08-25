@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 19:52:40 by mvisca            #+#    #+#             */
-/*   Updated: 2023/08/24 15:20:57 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/08/25 16:51:17 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void    error_and_exit(int msj, char *str, t_game *g)
 		mlx_destroy_window(g->mlx, g->win);
 	if (g->mlx)
 		free(g->mlx);
-	if (g->map->tiles)
+	if (g->map && g->map->tiles)
 		free_map(g);
 	if (g->map)
 		free(g->map);

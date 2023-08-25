@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 18:08:53 by mvisca            #+#    #+#             */
-/*   Updated: 2023/08/24 16:10:03 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/08/25 16:52:17 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,15 @@
 
 void	sl_load_assets(t_game *g);
 void	*sl_xpmtoi(void *mlx, char *file, int *w, int* h);
+int		sl_valid_filename(char *filename);
 
 void    sl_init(char *filename, t_game *g)
 {
 	g->mlx = mlx_init();
 	if (!g->mlx)
-			error_and_exit(TRUE, "Display error\n", g);
+		error_and_exit(TRUE, "Display error\n", g);
+	if (!sl_valid_filename(filename))
+		error_and_exit(TRUE, "Filename error\n", g);
 	g->map = sl_map_init(filename, g);
 	if (!g->map)
 		error_and_exit(TRUE, "Map error\n", g);
@@ -58,4 +61,22 @@ void	*sl_xpmtoi(void *mlx, char *file, int *w, int* h)
 
 	img = mlx_xpm_file_to_image(mlx, file, w, h);
 	return (img); 
+}
+
+int		sl_valid_filename(char *filename)
+{
+	int	len;
+
+	len = ft_strlen(filename);
+	if (len < 4)
+		return (FALSE);
+	if (ft_tolower(filename[len - 1]) != 'r')
+		return (FALSE);
+	if (ft_tolower(filename[len - 2]) != 'e')
+		return (FALSE);
+	if (ft_tolower(filename[len - 3]) != 'b')
+		return (FALSE);
+	if (ft_tolower(filename[len - 4]) != '.')
+		return (FALSE);
+	return (TRUE);
 }
