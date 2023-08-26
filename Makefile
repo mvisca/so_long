@@ -11,7 +11,8 @@ SRC		:=	src/so_long.c \
 			src/sl_map_show.c \
 			src/sl_map_validate.c \
 			src/sl_map_validate_solve.c \
-			src/sl_run_game.c
+			src/sl_game_move.c \
+			src/sl_game_run.c
 
 LIBFT	:=	libft
 

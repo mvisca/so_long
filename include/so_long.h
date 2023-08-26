@@ -43,8 +43,11 @@ void    sl_map_show(t_game *g);
 // sl_map_validate.c
 int	    sl_solvable(t_game *g);
 
-// sl_run_game.c
+// sl_game_run.c
 void    sl_run_game(t_game *g);
+
+// sl_game_run.c
+void    sl_move(int r_ini, int c_ini, int r_move, int c_move, t_game *g);
 
 // sl_utils.c
 void    error_and_exit(int msj, char *str, t_game *g);
