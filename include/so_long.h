@@ -34,8 +34,17 @@ int		sl_get_map_xy(char *info, int option, t_game *g);
 // sl_map_validate.c
 t_map	*sl_map_validate(t_game *g);
 
+// sl_map_validate_solve.c
+void    sl_find_pyr(t_game *g, int *pr, int *pc);
+
+// sl_map_show.c
+void    sl_map_show(t_game *g);
+
 // sl_map_validate.c
 int	    sl_solvable(t_game *g);
+
+// sl_run_game.c
+void    sl_run_game(t_game *g);
 
 // sl_utils.c
 void    error_and_exit(int msj, char *str, t_game *g);

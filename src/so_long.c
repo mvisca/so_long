@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 11:37:00 by mvisca            #+#    #+#             */
-/*   Updated: 2023/08/25 17:52:31 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/08/26 14:21:18 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,13 @@ int	main(int ac, char **av)
 	{
 		filename = av[1];
 		sl_init(av[1], &g);
-
-		// dibujo del map
+		sl_map_show(&g);
+		sl_run_game(&g);
 		// binding de teclas
 		// control del juego
 		
 	// images test
-		mlx_put_image_to_window(g.mlx, g.win, g.img[goal]->ptr, 0 * 32, 1 * 32);
+		// mlx_put_image_to_window(g.mlx, g.win, g.img[goal]->ptr, 0 * 32, 1 * 32);
 //		mlx_hook(g->win, 2, 0, sl_game_read_keys, g);
 //		mlx_hook(g->win, 17, 0, sl_game_destroy, g);
 	}

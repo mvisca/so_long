@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 18:08:53 by mvisca            #+#    #+#             */
-/*   Updated: 2023/08/25 17:51:17 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/08/26 13:28:19 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	sl_load_assets(t_game *g)
 	g->img[wall]->ptr = sl_xpmtoi(g->mlx, "a/w.xpm", &g->img_w, &g->img_h);
 	g->img[coll]->ptr = sl_xpmtoi(g->mlx, "a/c.xpm",&g->img_w, &g->img_h);
 	g->img[goal]->ptr = sl_xpmtoi(g->mlx, "a/g.xpm",&g->img_w, &g->img_h);
-	g->img[pyr]->ptr = sl_xpmtoi(g->mlx, "a/g.xpm", &g->img_w, &g->img_h);
+	g->img[pyr]->ptr = sl_xpmtoi(g->mlx, "a/p.xpm", &g->img_w, &g->img_h);
 }
 	
 void	*sl_xpmtoi(void *mlx, char *file, int *w, int* h)

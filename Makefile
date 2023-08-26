@@ -8,8 +8,10 @@ SRC		:=	src/so_long.c \
 			src/sl_init.c \
 			src/sl_utils.c \
 			src/sl_map_init.c \
+			src/sl_map_show.c \
 			src/sl_map_validate.c \
-			src/sl_map_validate_solve.c
+			src/sl_map_validate_solve.c \
+			src/sl_run_game.c
 
 LIBFT	:=	libft
 

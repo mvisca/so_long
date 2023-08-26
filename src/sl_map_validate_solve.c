@@ -6,13 +6,13 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/25 10:02:38 by mvisca            #+#    #+#             */
-/*   Updated: 2023/08/25 17:14:44 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/08/26 14:18:53 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-static void	sl_find_pyr(t_game *g, int *pr, int *pc);
+void	sl_find_pyr(t_game *g, int *pr, int *pc);
 static char	**sl_mapdup(t_game *g, t_map **map);
 static void	sl_pathfinder(t_map **map, int pr, int pc);
 
@@ -73,7 +73,7 @@ static char	**sl_mapdup(t_game *g, t_map **map)
 }
 
 
-static void    sl_find_pyr(t_game *g, int *pr, int *pc)
+void    sl_find_pyr(t_game *g, int *pr, int *pc)
 {
 	int 	r;
 	int 	c;
