@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 11:37:00 by mvisca            #+#    #+#             */
-/*   Updated: 2023/08/26 18:26:05 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/08/27 11:32:44 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	main(int ac, char **av)
 
 static void	sl_g_null(t_game *g)
 {
-	g->mlx = NULL;	
+	g->mlx = NULL;
 	g->win = NULL;
 	g->map = NULL;
 	g->img = NULL;

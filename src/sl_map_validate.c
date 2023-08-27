@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 20:10:23 by mvisca            #+#    #+#             */
-/*   Updated: 2023/08/27 11:27:58 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/08/27 11:51:13 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,26 +16,19 @@ static int	sl_same_len_cols(t_game *g);
 static int	sl_map_wall_borders(t_game *g);
 static int	sl_proper_elements(t_game *g);
 
-t_map    *sl_map_validate(t_game *g)
+t_map	*sl_map_validate(t_game *g)
 {
 	if (g->map->c == g->map->r || !sl_same_len_cols(g))
 		error_and_exit(TRUE, "Map dimensions error\n", g);
-
 	if (!sl_map_wall_borders(g))
 		error_and_exit(TRUE, "Map borders error\n", g);
-
 	if (!sl_proper_elements(g))
 		error_and_exit(TRUE, "Map elements error\n", g);
-	
-	if (g->map->goal == 0 || g->map->goal > 1 || g->map->pyr == 0 || 
+	if (g->map->goal == 0 || g->map->goal > 1 || g->map->pyr == 0 || \
 	g->map->pyr > 1 || g->map->coll == 0)
 		error_and_exit(TRUE, "Map player/exit/coll error\n", g);
-
 	if (!sl_solvable(g))
 		error_and_exit(TRUE, "Map not possible error\n", g);
-
-	// que todos los colls y goal esten al alcance de p
-	
 	return (g->map);
 }
 
@@ -62,7 +55,7 @@ static int	sl_map_wall_borders(t_game *g)
 	int	i;
 
 	lst_r = g->map->r;
-	lst_c = g->map->c; 
+	lst_c = g->map->c;
 	i = 0;
 	while (i < lst_c)
 	{

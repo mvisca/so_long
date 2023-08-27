@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/25 10:02:38 by mvisca            #+#    #+#             */
-/*   Updated: 2023/08/27 11:31:12 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/08/27 11:32:21 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,12 +100,12 @@ static void	sl_pathfinder(t_map **map, int pr, int pc)
 	(*map)->tiles[pr][pc] = 'X';
 	if ((pr - 1 > 0) && (!ft_strchr("X1", (*map)->tiles[pr - 1][pc])))
 		sl_pathfinder(map, pr - 1, pc);
-	if ((pr + 1 < (*map)->r - 1) &&
+	if ((pr + 1 < (*map)->r - 1) && \
 	(!ft_strchr("X1", (*map)->tiles[pr + 1][pc])))
 		sl_pathfinder(map, pr + 1, pc);
 	if ((pc - 1 > 0) && (!ft_strchr("X1", (*map)->tiles[pr][pc - 1])))
 		sl_pathfinder(map, pr, pc - 1);
-	if ((pc + 1 < (*map)->c - 1) &&
+	if ((pc + 1 < (*map)->c - 1) && \
 		(!ft_strchr("X1", (*map)->tiles[pr][pc + 1])))
 		sl_pathfinder(map, pr, pc + 1);
 }

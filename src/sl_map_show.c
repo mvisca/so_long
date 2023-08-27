@@ -6,18 +6,18 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/26 12:36:16 by mvisca            #+#    #+#             */
-/*   Updated: 2023/08/26 13:29:22 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/08/27 12:03:35 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-static void	sl_putimg(void *mlx, void *win, void *ptr, int r, int c);
+static void	sl_putimg(t_game *g, int r, int c, t_tiles type);
 
-void sl_map_show(t_game *g)
+void	sl_map_show(t_game *g)
 {
-	int r;
-	int c;
+	int	r;
+	int	c;
 
 	r = 0;
 	while (r < g->map->r)
@@ -26,25 +26,24 @@ void sl_map_show(t_game *g)
 		while (c < g->map->c)
 		{
 			if (g->map->tiles[r][c] == '0')
-				mlx_put_image_to_window(g->mlx, g->win, g->img[road]->ptr, c * 32, r * 32);
+				sl_putimg(g, c, r, road);
 			else if (g->map->tiles[r][c] == '1')
-				mlx_put_image_to_window(g->mlx, g->win, g->img[wall]->ptr, c * 32, r * 32);
+				sl_putimg(g, c, r, wall);
 			else if (g->map->tiles[r][c] == 'C')
-				mlx_put_image_to_window(g->mlx, g->win, g->img[coll]->ptr, c * 32, r * 32);
+				sl_putimg(g, c, r, coll);
     		else if (g->map->tiles[r][c] == 'B')
-                mlx_put_image_to_window(g->mlx, g->win, g->img[pyr]->ptr, c * 32, r * 32);
+				sl_putimg(g, c, r, pyr);
     		else if (g->map->tiles[r][c] == 'E')
-                mlx_put_image_to_window(g->mlx, g->win, g->img[goal]->ptr, c * 32, r * 32);
+				sl_putimg(g, c, r, goal);
     		else if (g->map->tiles[r][c] == 'P')
-                mlx_put_image_to_window(g->mlx, g->win, g->img[pyr]->ptr, c * 32, r * 32);
+				sl_putimg(g, c, r, pyr);
 			c++;
 		}
 		r++;
 	}    
 }
 
-static void	sl_putimg(void *mlx, void *win, void *ptr, int c, int r)
+static void	sl_putimg(t_game *g, int c, int r, t_tiles type)
 {
-	mlx_put_image_to_window(mlx, win, ptr, c, r);
+	mlx_put_image_to_window(g->mlx, g->win, g->img[type]->ptr, c * 32, r * 32);
 }
-

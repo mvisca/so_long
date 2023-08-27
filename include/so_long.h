@@ -7,6 +7,7 @@
 # include <stdio.h>     // perror()
 # include <string.h>    // strerror()
 # include <fcntl.h>     // O_RDONLY
+#include <X11/keysym.h>
 # include "sl_types.h"
 # include "../libft/include/libft.h"
 

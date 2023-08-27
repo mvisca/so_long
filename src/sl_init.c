@@ -6,18 +6,17 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 18:08:53 by mvisca            #+#    #+#             */
-/*   Updated: 2023/08/27 09:30:37 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/08/27 11:54:42 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-void	sl_load_assets(t_game *g);
-static void	sl_load_img_data(t_game *g);
-static void	*sl_xpmtoi(void *mlx, char *file, int *w, int* h);
-static int		sl_valid_filename(char *filename);
+void		sl_load_assets(t_game *g);
+static void	*sl_xpmtoi(void *mlx, char *file, int *w, int *h);
+static int	sl_valid_filename(char *filename);
 
-void    sl_init(char *filename, t_game *g)
+void	sl_init(char *filename, t_game *g)
 {
 	if (!sl_valid_filename(filename))
 		error_and_exit(TRUE, "Filename error\n", g);
@@ -27,7 +26,7 @@ void    sl_init(char *filename, t_game *g)
 	g->map = sl_map_init(filename, g);
 	if (!g->map)
 		error_and_exit(TRUE, "Map error\n", g);
-	g->win = mlx_new_window(g->mlx, g->map->c *32, g->map->r *32, "So Long");
+	g->win = mlx_new_window(g->mlx, g->map->c * 32, g->map->r * 32, "So Long");
 	if (!g->win)
 		error_and_exit(TRUE, "Window error\n", g);
 	sl_load_assets(g);
@@ -51,20 +50,20 @@ void	sl_load_assets(t_game *g)
 	}
 	g->img[road]->ptr = sl_xpmtoi(g->mlx, "img/r.xpm", &g->img_w, &g->img_h);
 	g->img[wall]->ptr = sl_xpmtoi(g->mlx, "img/w.xpm", &g->img_w, &g->img_h);
-	g->img[coll]->ptr = sl_xpmtoi(g->mlx, "img/c.xpm",&g->img_w, &g->img_h);
-	g->img[goal]->ptr = sl_xpmtoi(g->mlx, "img/g.xpm",&g->img_w, &g->img_h);
+	g->img[coll]->ptr = sl_xpmtoi(g->mlx, "img/c.xpm", &g->img_w, &g->img_h);
+	g->img[goal]->ptr = sl_xpmtoi(g->mlx, "img/g.xpm", &g->img_w, &g->img_h);
 	g->img[pyr]->ptr = sl_xpmtoi(g->mlx, "img/p.xpm", &g->img_w, &g->img_h);
 }
 
-void	*sl_xpmtoi(void *mlx, char *file, int *w, int* h)
+void	*sl_xpmtoi(void *mlx, char *file, int *w, int *h)
 {
 	void	*img;
 
 	img = mlx_xpm_file_to_image(mlx, file, w, h);
-	return (img); 
+	return (img);
 }
 
-int		sl_valid_filename(char *filename)
+int	sl_valid_filename(char *filename)
 {
 	int	len;
 

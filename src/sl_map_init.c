@@ -6,47 +6,59 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 11:17:49 by mvisca            #+#    #+#             */
-/*   Updated: 2023/08/24 16:32:15 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/08/27 11:46:19 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-char	**sl_load_map(char *filename, t_game *g);
-int     sl_get_map_xy(char *info, int option, t_game *g);
+char		**sl_load_map(char *filename, t_game *g);
+static char	*sl_read_fd(int fd, t_game *g);
+int			sl_get_map_xy(char *info, int option, t_game *g);
 
-t_map   *sl_map_init(char *filename, t_game *g)
+t_map	*sl_map_init(char *filename, t_game *g)
 {
-    g->map = (t_map *) malloc (sizeof(t_map));
-    if (!g->map)
-        error_and_exit(TRUE, "Map alloc error\n", g);
-    g->map->tiles = sl_load_map(filename, g);
-    if (!g->map->tiles)
-        error_and_exit(TRUE, "Map load error\n", g);
-    g->map->r = sl_get_map_xy("rows", 1, g);
-    g->map->c = sl_get_map_xy("cols", 0, g);
+	g->map = (t_map *) malloc (sizeof(t_map));
+	if (!g->map)
+		error_and_exit(TRUE, "Map alloc error\n", g);
+	g->map->tiles = sl_load_map(filename, g);
+	if (!g->map->tiles)
+		error_and_exit(TRUE, "Map load error\n", g);
+	g->map->r = sl_get_map_xy("rows", 1, g);
+	g->map->c = sl_get_map_xy("cols", 0, g);
 	g->map = sl_map_validate(g);
-    return (g->map);
+	return (g->map);
 }
 
 char	**sl_load_map(char *filename, t_game *g)
+{
+	int		fd;
+	char	*str_map;
+	char	**res;
+
+	fd = open(filename, O_RDONLY);
+	if (fd < 0)
+	{
+		ft_printf("Open file error\n");
+		exit(EXIT_FAILURE);
+	}
+	str_map = sl_read_fd(fd, g);
+	res = ft_split(str_map, '\n');
+	close (fd);
+	free(str_map);
+	return (res);
+}
+
+static char	*sl_read_fd(int fd, t_game *g)
 {
 	char	buffer[101];
 	int		bytes_read;
 	char	*str_map;
 	char	*aux;
-	int		fd;
-	char	**res;
 
 	buffer[100] = '\0';
 	bytes_read = 1;
 	str_map = ft_strdup("");
-	fd = open(filename, O_RDONLY);
-	if (fd < 0)
-	{
-		ft_printf("Open file erro\n");
-		exit(EXIT_FAILURE);
-	}
 	while (bytes_read > 0)
 	{
 		bytes_read = read(fd, buffer, 100);
@@ -59,19 +71,16 @@ char	**sl_load_map(char *filename, t_game *g)
 		if (!str_map)
 			error_and_exit(TRUE, "Read file error\n", g);
 	}
-	close (fd);
-	res = ft_split(str_map, '\n');
-	free(str_map);
-	return (res);
+	return (str_map);
 }
 
-int     sl_get_map_xy(char *info, int option, t_game *g)
+int	sl_get_map_xy(char *info, int option, t_game *g)
 {
 	int	rows;
 	int	cols;
 
-    (void)info;
-    if (option)
+	(void)info;
+	if (option)
 	{
 		rows = 0;
 		while (g->map->tiles[rows])

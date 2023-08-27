@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/26 17:52:09 by mvisca            #+#    #+#             */
-/*   Updated: 2023/08/27 11:22:09 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/08/27 11:35:00 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 static void	sl_congratulations(t_game *g);
 
-void    sl_move(int r_move, int c_move, t_game *g)
+void	sl_move(int r_move, int c_move, t_game *g)
 {
-	char    dest;
+	char	dest;
 
 	dest = g->map->tiles[g->p_r + r_move][g->p_c + c_move];
 	if (dest == '1')
-		return;
+		return ;
 	if (g->map->tiles[g->p_r][g->p_c] == 'P')
 		g->map->tiles[g->p_r][g->p_c] = '0';
 	else if (g->map->tiles[g->p_r][g->p_c] == 'B')

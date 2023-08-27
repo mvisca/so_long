@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 19:52:40 by mvisca            #+#    #+#             */
-/*   Updated: 2023/08/26 17:47:51 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/08/27 11:34:07 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,10 @@ void	free_map(t_game *g);
 void	free_img(t_game *g);
 void	sl_freemap(t_game *g, t_map **map);
 
-void    error_and_exit(int msj, char *str, t_game *g)
+void	error_and_exit(int msj, char *str, t_game *g)
 {
-	int i;
+	int	i;
+
 	if (msj)
 		ft_printf("%s", str);
 	if (g->img)
@@ -82,7 +83,7 @@ void	free_img(t_game *g)
 void	sl_freemap(t_game *g, t_map **map)
 {
 	int	r;
-	
+
 	r = 0;
 	while (r < g->map->r)
 		free((*map)->tiles[r++]);
