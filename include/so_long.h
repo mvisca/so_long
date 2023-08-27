@@ -47,7 +47,7 @@ int	    sl_solvable(t_game *g);
 void    sl_run_game(t_game *g);
 
 // sl_game_run.c
-void    sl_move(int r_ini, int c_ini, int r_move, int c_move, t_game *g);
+void    sl_move(int r_move, int c_move, t_game *g);
 void    sl_game_end(t_game *g);
 
 // sl_utils.c

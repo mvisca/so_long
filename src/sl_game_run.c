@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/26 14:19:51 by mvisca            #+#    #+#             */
-/*   Updated: 2023/08/27 09:13:42 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/08/27 11:23:10 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,18 +41,15 @@ static int  sl_handle_release(int keysym, t_game *g)
 
 static int  sl_handle_press(int keysym, t_game *g)
 {
-	int	pr;
-	int pc;
-
-	sl_find_pyr(g, &pr, &pc);
+	sl_find_pyr(g, &g->p_r, &g->p_c);
 	if (keysym == XK_Up || keysym == XK_w)
-		sl_move(pr, pc, -1, 0, g);
+		sl_move(-1, 0, g);
 	if (keysym == XK_Down || keysym == XK_s)
-		sl_move(pr, pc, 1, 0, g);
+		sl_move(1, 0, g);
 	if (keysym == XK_Left || keysym == XK_a)
-		sl_move(pr, pc, 0, -1, g);
+		sl_move(0, -1, g);
 	if (keysym == XK_Right || keysym == XK_d)
-		sl_move(pr, pc, 0, 1, g);
+		sl_move(0, 1, g);
 }
 
 static int  sl_handle_end(int keysym, t_game *g)

@@ -6,13 +6,13 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/25 10:02:38 by mvisca            #+#    #+#             */
-/*   Updated: 2023/08/27 09:17:26 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/08/27 11:31:12 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-void	sl_find_pyr(t_game *g, int *pr, int *pc);
+void		sl_find_pyr(t_game *g, int *pr, int *pc);
 static char	**sl_mapdup(t_game *g, t_map **map);
 static void	sl_pathfinder(t_map **map, int pr, int pc);
 
@@ -33,12 +33,6 @@ int	sl_solvable(t_game *g)
 	map->r = g->map->r;
 	map->c = g->map->c;
 	sl_pathfinder(&map, pr, pc);
-	int i = 0;
-	while (i < g->map->r)
-	{
-		ft_printf("%s\n", map->tiles[i++]);
-	}
-	ft_printf("coll = %d, goal = %d\n", map->coll, map->goal);
 	if (map->coll != g->map->coll || map->goal != g->map->goal)
 	{
 		sl_freemap(g, &map);
@@ -51,7 +45,7 @@ int	sl_solvable(t_game *g)
 static char	**sl_mapdup(t_game *g, t_map **map)
 {
 	int	r;
-	
+
 	(*map)->tiles = (char **) malloc (sizeof(char *) * g->map->r);
 	if (!(*map)->tiles)
 		error_and_exit(TRUE, "Map copy memory alloc error\n", g);
@@ -72,11 +66,10 @@ static char	**sl_mapdup(t_game *g, t_map **map)
 	return ((*map)->tiles);
 }
 
-
-void    sl_find_pyr(t_game *g, int *pr, int *pc)
+void	sl_find_pyr(t_game *g, int *pr, int *pc)
 {
-	int 	r;
-	int 	c;
+	int	r;
+	int	c;
 
 	r = 1;
 	while (r < g->map->r - 1)
@@ -104,18 +97,15 @@ static void	sl_pathfinder(t_map **map, int pr, int pc)
 		(*map)->coll++;
 	else if ((*map)->tiles[pr][pc] == 'E')
 		(*map)->goal++;
-	
 	(*map)->tiles[pr][pc] = 'X';
-
 	if ((pr - 1 > 0) && (!ft_strchr("X1", (*map)->tiles[pr - 1][pc])))
 		sl_pathfinder(map, pr - 1, pc);
-
-	if ((pr + 1 < (*map)->r - 1) && (!ft_strchr("X1", (*map)->tiles[pr + 1][pc])))
+	if ((pr + 1 < (*map)->r - 1) &&
+	(!ft_strchr("X1", (*map)->tiles[pr + 1][pc])))
 		sl_pathfinder(map, pr + 1, pc);
-
 	if ((pc - 1 > 0) && (!ft_strchr("X1", (*map)->tiles[pr][pc - 1])))
 		sl_pathfinder(map, pr, pc - 1);
-
-	if ((pc + 1 < (*map)->c - 1) && (!ft_strchr("X1", (*map)->tiles[pr][pc + 1])))
+	if ((pc + 1 < (*map)->c - 1) &&
+		(!ft_strchr("X1", (*map)->tiles[pr][pc + 1])))
 		sl_pathfinder(map, pr, pc + 1);
 }

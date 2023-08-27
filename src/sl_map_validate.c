@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 20:10:23 by mvisca            #+#    #+#             */
-/*   Updated: 2023/08/25 11:48:41 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/08/27 11:27:58 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,5 @@ static int	sl_proper_elements(t_game *g)
 		}
 		r++;
 	}
-	ft_printf("c=%d e=%d p=%d\n", g->map->coll, g->map->goal, g->map->pyr);
 	return (TRUE);
 }

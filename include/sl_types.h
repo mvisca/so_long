@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 12:39:38 by mvisca            #+#    #+#             */
-/*   Updated: 2023/08/27 09:30:58 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/08/27 11:16:35 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ typedef struct s_game
 	int			img_w;
 	int			img_h;
 	int			turns;
+	int			p_r;
+	int			p_c;
 }	t_game;
 
 #endif
