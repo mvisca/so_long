@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/26 14:19:51 by mvisca            #+#    #+#             */
-/*   Updated: 2023/08/26 18:29:10 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/08/27 09:13:42 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 static int  sl_handle_release(int keysym, t_game *g);
 static int  sl_handle_press(int keysym, t_game *g);
 static int  sl_handle_end(int keysym, t_game *g);
+void 		sl_game_end(t_game *g);
 
 void    sl_run_game(t_game *g)
 {
@@ -26,11 +27,6 @@ void    sl_run_game(t_game *g)
 	mlx_hook(g->win, KeyPress, KeyPressMask, &sl_handle_press, g);
 	mlx_loop(g->mlx);
 }	
-
-// static int  sl_handle_no_event(void *data)
-// {
-// 	return (0);
-// }
 
 static int  sl_handle_release(int keysym, t_game *g)
 {
@@ -62,6 +58,14 @@ static int  sl_handle_press(int keysym, t_game *g)
 static int  sl_handle_end(int keysym, t_game *g)
 {
 	mlx_destroy_window(g->mlx, g->win);
+	g->win = NULL;
+	mlx_loop_end(g->mlx);
+	error_and_exit(FALSE, "", g);
+}
+
+void sl_game_end(t_game *g)
+{
+   	mlx_destroy_window(g->mlx, g->win);
 	g->win = NULL;
 	mlx_loop_end(g->mlx);
 	error_and_exit(FALSE, "", g);

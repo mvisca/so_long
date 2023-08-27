@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 12:39:38 by mvisca            #+#    #+#             */
-/*   Updated: 2023/08/26 17:23:22 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/08/27 09:30:58 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,6 @@ typedef struct s_slimg
 	int			size;
 	int			bpp;
 	int			endian;
-	int			w;
-	int			h;
 }	t_slimg;
 
 typedef struct s_game
@@ -53,8 +51,8 @@ typedef struct s_game
 	void		*win;
 	t_map		*map;
 	t_slimg		**img;
-	int			img_w; // for test
-	int			img_h; // for test
+	int			img_w;
+	int			img_h;
 	int			turns;
 }	t_game;
 

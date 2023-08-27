@@ -6,17 +6,19 @@ int	main(void)
 	void	*win;
 	t_slimg	*img1;
 	t_slimg	*img2;
+	int		size;
 
+	size = 32;
 	mlx = mlx_init();
 	win = mlx_new_window(mlx, 320, 320, "HOLA");
 
 	// crea struct con los datos para mostrar imagen
 	img1 = (t_slimg *) malloc (sizeof(t_slimg) * 1);
-	img1->ptr = mlx_xpm_file_to_image(mlx, "a/r.xpm", &img1->w, &img1->h);
+	img1->ptr = mlx_xpm_file_to_image(mlx, "img/r.xpm", &size, &size);
 	img1->data = (int *)mlx_get_data_addr(img1->ptr, &img1->bpp, &img1->size, &img1->endian);
 
 	img2 = (t_slimg *) malloc (sizeof(t_slimg) * 1);
-	img2->ptr = mlx_xpm_file_to_image(mlx, "a/g.xpm", &img2->w, &img2->w);
+	img2->ptr = mlx_xpm_file_to_image(mlx, "img/g.xpm", &size, &size);
 	img2->data = (int *)mlx_get_data_addr(img2->ptr, &img2->bpp, &img2->size, &img2->endian);
 
 	// iteración anidada para cubrir al ventana con tiles

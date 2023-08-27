@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 18:08:53 by mvisca            #+#    #+#             */
-/*   Updated: 2023/08/26 13:28:19 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/08/27 09:30:37 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,13 +49,13 @@ void	sl_load_assets(t_game *g)
 			error_and_exit(TRUE, "Images error\n", g);
 		i++;
 	}
-	g->img[road]->ptr = sl_xpmtoi(g->mlx, "a/r.xpm", &g->img_w, &g->img_h);
-	g->img[wall]->ptr = sl_xpmtoi(g->mlx, "a/w.xpm", &g->img_w, &g->img_h);
-	g->img[coll]->ptr = sl_xpmtoi(g->mlx, "a/c.xpm",&g->img_w, &g->img_h);
-	g->img[goal]->ptr = sl_xpmtoi(g->mlx, "a/g.xpm",&g->img_w, &g->img_h);
-	g->img[pyr]->ptr = sl_xpmtoi(g->mlx, "a/p.xpm", &g->img_w, &g->img_h);
+	g->img[road]->ptr = sl_xpmtoi(g->mlx, "img/r.xpm", &g->img_w, &g->img_h);
+	g->img[wall]->ptr = sl_xpmtoi(g->mlx, "img/w.xpm", &g->img_w, &g->img_h);
+	g->img[coll]->ptr = sl_xpmtoi(g->mlx, "img/c.xpm",&g->img_w, &g->img_h);
+	g->img[goal]->ptr = sl_xpmtoi(g->mlx, "img/g.xpm",&g->img_w, &g->img_h);
+	g->img[pyr]->ptr = sl_xpmtoi(g->mlx, "img/p.xpm", &g->img_w, &g->img_h);
 }
-	
+
 void	*sl_xpmtoi(void *mlx, char *file, int *w, int* h)
 {
 	void	*img;

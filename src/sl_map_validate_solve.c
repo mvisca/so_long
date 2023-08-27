@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/25 10:02:38 by mvisca            #+#    #+#             */
-/*   Updated: 2023/08/26 14:18:53 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/08/27 09:17:26 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,8 @@ void    sl_find_pyr(t_game *g, int *pr, int *pc)
 		c = 1;
 		while (c < g->map->c - 1)
 		{
-			if (g->map->tiles[r][c] == 'P')
+			if (g->map->tiles[r][c] == 'P' ||
+			g->map->tiles[r][c] == 'B')
 			{
 				*pr = r;
 				*pc = c;
