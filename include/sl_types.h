@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 12:39:38 by mvisca            #+#    #+#             */
-/*   Updated: 2023/08/27 11:16:35 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/08/27 12:07:03 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ typedef enum e_tiles
 	coll,
 	goal,
 	pyr
-}   t_tiles;
+}	t_tiles;
 
 typedef struct s_map
 {

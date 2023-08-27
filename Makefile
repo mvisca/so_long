@@ -1,3 +1,19 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/08/27 12:07:44 by mvisca            #+#    #+#              #
+#    Updated: 2023/08/27 12:07:54 by mvisca           ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+# // cc main.c -Lmlx/minilibx -lmlx -Imlx/minilibx -framework OpenGl -framework AppKit
+
+# // cc main.c -Lmlx/minilibx-linux -lmlx_Linux -L/usr/lib -Imlx/minilibx-linux -lXext -lX11 -lm -lz -o prog
+
 #---------- TARGET ---------------------#
 
 NAME	:=	so_long
