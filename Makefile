@@ -6,7 +6,7 @@
 #    By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/27 12:07:44 by mvisca            #+#    #+#              #
-#    Updated: 2023/08/28 17:29:55 by mvisca-g         ###   ########.fr        #
+#    Updated: 2023/08/28 19:48:17 by mvisca-g         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,11 +68,12 @@ callforlib:
 	@$(MAKE) -C libft/ --silent
 	@$(MAKE) -C $(OSMLX) --silent
 
+clean:
+	@$(MAKE) -C $(OSMLX) clean --silent
 
-fclean:
+fclean: clean
 	rm -rf so_long test
 	@$(MAKE) -C libft/ fclean --silent
-	@$(MAKE) -C $(OSMLX) clean --silent
 
 re: fclean all
 

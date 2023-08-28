@@ -1,3 +1,4 @@
 mlx
 libft/.objects
 libft/libft.a
+lib_test.c
