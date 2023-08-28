@@ -6,7 +6,7 @@
 /*   By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/26 14:19:51 by mvisca            #+#    #+#             */
-/*   Updated: 2023/08/28 19:46:14 by mvisca-g         ###   ########.fr       */
+/*   Updated: 2023/08/28 20:06:04 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void		sl_game_end(t_game *g);
 
 void	sl_run_game(t_game *g)
 {
-	mlx_hook(g->win, 17, 0, &sl_handle_end, 0);
+	mlx_hook(g->win, 17, 0, (void *) sl_game_end, g);
 	mlx_hook(g->win, 2, 0, &sl_handle_arrows, g);
 	mlx_loop(g->mlx);
 }
@@ -43,8 +43,8 @@ static int	sl_handle_arrows(int keysym, t_game *g)
 
 static int	sl_handle_end(int keysym, t_game *g)
 {
-	mlx_destroy_window(g->mlx, 0);
-	g->win = NULL;
+	// mlx_destroy_window(g->mlx, 0);
+	// g->win = NULL;
 	error_and_exit(FALSE, "", g);
 	return (FALSE);
 }

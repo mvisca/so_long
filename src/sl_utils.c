@@ -6,7 +6,7 @@
 /*   By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 19:52:40 by mvisca            #+#    #+#             */
-/*   Updated: 2023/08/28 19:37:46 by mvisca-g         ###   ########.fr       */
+/*   Updated: 2023/08/28 20:02:59 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	free_map(t_game *g)
 
 void	free_img(t_game *g)
 {
-	if (g->img)
+if (g->img && g->img[road])
 	{
 		mlx_destroy_image(g->mlx, g->img[road]->ptr);
 		g->img[road]->ptr = NULL;
