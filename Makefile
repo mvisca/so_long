@@ -6,7 +6,7 @@
 #    By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/27 12:07:44 by mvisca            #+#    #+#              #
-#    Updated: 2023/08/28 19:48:17 by mvisca-g         ###   ########.fr        #
+#    Updated: 2023/08/28 19:56:12 by mvisca-g         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,32 +52,32 @@ LIBFTFLAGS	:=	-Llibft -lft -Ilibft/include
 
 #---------- OS SPECIFIC FLAGS ----------#
 
-
 all: callforlib $(NAME)
 
-$(NAME): $(LIBFT) $(MLX)
+$(NAME): $(MLX) $(LIBFT)
 	$(CC) $(SRC) $(OSFLAGS) $(LIBFTFLAGS) $(DEBUG) -o $(NAME)
-
-$(LIBFT):
-	@$(MAKE) -C libft/ --silent
 
 $(MLX):
 	@$(MAKE) -C $(OSMLX) --silent
+	
+$(LIBFT):
+	@$(MAKE) -C $(LIBFT) --silent
 
 callforlib:
-	@$(MAKE) -C libft/ --silent
 	@$(MAKE) -C $(OSMLX) --silent
+	@$(MAKE) -C $(LIBFT) --silent
 
 clean:
 	@$(MAKE) -C $(OSMLX) clean --silent
+	@$(MAKE) -C $(LIBFT) clean --silent
 
 fclean: clean
-	rm -rf so_long test
-	@$(MAKE) -C libft/ fclean --silent
+	@rm -rf so_long test --silent
+	@$(MAKE) -C $(LIBFT) fclean --silent
 
 re: fclean all
 
 test:
 	$(CC) src/lib_test.c $(OSFLAGS) $(DEBUG) -o test
 
-.PHONY: fclean re test
+.PHONY: clean fclean re test
