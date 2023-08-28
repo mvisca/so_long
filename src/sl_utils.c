@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sl_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 19:52:40 by mvisca            #+#    #+#             */
-/*   Updated: 2023/08/27 11:34:07 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/08/28 19:37:46 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	error_and_exit(int msj, char *str, t_game *g)
 	}
 	if (g->mlx)
 	{
-		mlx_destroy_display(g->mlx);
+		free(g->win);
 		free(g->mlx);
 	}
 	if (g->map && g->map->tiles)

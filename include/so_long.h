@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 12:08:09 by mvisca            #+#    #+#             */
-/*   Updated: 2023/08/27 12:10:40 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/08/28 17:17:15 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@
 # include <stdio.h>     // perror()
 # include <string.h>    // strerror()
 # include <fcntl.h>     // O_RDONLY
-# include <X11/keysym.h>
 # include "sl_types.h"
+# include "sl_defines.h"
 # include "../libft/include/libft.h"
 
 // Selecciona el header de minilib para MacOS o Linux
 # ifdef __APPLE__
 #  include "../mlx/minilibx/mlx.h"
-#  include "../mlx/minilibx/mlx_int.h"
+// #  include "../mlx/minilibx/mlx_int.h"
 # elif __linux__
 #  include "../mlx/minilibx-linux/mlx.h"
 #  include "../mlx/minilibx-linux/mlx_int.h"

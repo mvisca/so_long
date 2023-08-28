@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+         #
+#    By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/27 12:07:44 by mvisca            #+#    #+#              #
-#    Updated: 2023/08/27 12:07:54 by mvisca           ###   ########.fr        #
+#    Updated: 2023/08/28 17:29:55 by mvisca-g         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,8 +40,10 @@ CC		:=	cc
 
 ifeq ($(shell uname -s),Darwin)  # macOS
 	OSFLAGS := -Lmlx/minilibx -lmlx -Imlx/minilibx -framework OpenGl -framework AppKit
+	OSMLX	:= mlx/minilibx
 else ifeq ($(shell uname -s),Linux)  # Linux
 	OSFLAGS := -Lmlx/minilibx-linux -lmlx_Linux -L/usr/lib -Imlx/minilibx-linux -lXext -lX11 -lm -lz
+	OSMLX	:= mlx/minilibx-linux
 else
 	$(error Sistema operativo no compatible)
 endif
@@ -53,18 +55,24 @@ LIBFTFLAGS	:=	-Llibft -lft -Ilibft/include
 
 all: callforlib $(NAME)
 
-$(NAME): $(LIBFT)
+$(NAME): $(LIBFT) $(MLX)
 	$(CC) $(SRC) $(OSFLAGS) $(LIBFTFLAGS) $(DEBUG) -o $(NAME)
 
 $(LIBFT):
 	@$(MAKE) -C libft/ --silent
 
+$(MLX):
+	@$(MAKE) -C $(OSMLX) --silent
+
 callforlib:
 	@$(MAKE) -C libft/ --silent
+	@$(MAKE) -C $(OSMLX) --silent
+
 
 fclean:
 	rm -rf so_long test
 	@$(MAKE) -C libft/ fclean --silent
+	@$(MAKE) -C $(OSMLX) clean --silent
 
 re: fclean all
 
