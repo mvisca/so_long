@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   sl_types.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 12:39:38 by mvisca            #+#    #+#             */
-/*   Updated: 2023/08/27 12:07:03 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/09/05 15:40:10 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SL_TYPES_H
 # define SL_TYPES_H
 
-# define BLOCK_SIZE 32
 # define TRUE 1
 # define FALSE 0
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sl_map_validate.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 20:10:23 by mvisca            #+#    #+#             */
-/*   Updated: 2023/08/27 11:51:13 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/09/05 16:13:25 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,7 @@ t_map	*sl_map_validate(t_game *g)
 		error_and_exit(TRUE, "Map borders error\n", g);
 	if (!sl_proper_elements(g))
 		error_and_exit(TRUE, "Map elements error\n", g);
-	if (g->map->goal == 0 || g->map->goal > 1 || g->map->pyr == 0 || \
-	g->map->pyr > 1 || g->map->coll == 0)
+	if (g->map->goal != 1 || g->map->pyr != 1 || g->map->coll == 0)
 		error_and_exit(TRUE, "Map player/exit/coll error\n", g);
 	if (!sl_solvable(g))
 		error_and_exit(TRUE, "Map not possible error\n", g);

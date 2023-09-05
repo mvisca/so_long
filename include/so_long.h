@@ -6,7 +6,7 @@
 /*   By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 12:08:09 by mvisca            #+#    #+#             */
-/*   Updated: 2023/08/28 17:17:15 by mvisca-g         ###   ########.fr       */
+/*   Updated: 2023/09/05 15:50:21 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,7 @@
 # include "../libft/include/libft.h"
 
 // Selecciona el header de minilib para MacOS o Linux
-# ifdef __APPLE__
-#  include "../mlx/minilibx/mlx.h"
-// #  include "../mlx/minilibx/mlx_int.h"
-# elif __linux__
-#  include "../mlx/minilibx-linux/mlx.h"
-#  include "../mlx/minilibx-linux/mlx_int.h"
-# else
-#  error "Sistema opeartivo no compatible"
-# endif
+# include "../mlx/minilibx/mlx.h"
 
 // sl_init.c
 void	sl_init(char *filename, t_game *g);

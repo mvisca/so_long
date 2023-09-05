@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 11:37:00 by mvisca            #+#    #+#             */
-/*   Updated: 2023/08/27 11:32:44 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/09/05 15:52:15 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	main(int ac, char **av)
 	if (ac == 2)
 	{
 		filename = av[1];
-		sl_init(av[1], &g);
+		sl_init(filename, &g);
 		sl_map_show(&g);
 		sl_run_game(&g);
 	}
