@@ -6,7 +6,7 @@
 /*   By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 19:52:40 by mvisca            #+#    #+#             */
-/*   Updated: 2023/09/14 12:24:08 by mvisca-g         ###   ########.fr       */
+/*   Updated: 2023/09/14 12:59:54 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,13 @@ void	free_map(t_game *g)
 	int	i;
 
 	i = 0;
-	while (g->map && g->map->tiles && g->map->tiles[i])
+	if (g->map->tiles[0] && g->map->tiles[0][0] != 0)
 	{
-		free(g->map->tiles[i]);
-		i++;
+		while (g->map && g->map->tiles && g->map->tiles[i])
+		{
+			free(g->map->tiles[i]);
+			i++;
+		}
 	}
 	free(g->map->tiles);
 }

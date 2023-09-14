@@ -6,7 +6,7 @@
 /*   By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 11:17:49 by mvisca            #+#    #+#             */
-/*   Updated: 2023/09/14 12:37:02 by mvisca-g         ###   ########.fr       */
+/*   Updated: 2023/09/14 13:23:50 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 char		**sl_load_map(char *filename, t_game *g);
 static char	*sl_read_fd(int fd, t_game *g);
 int			sl_get_map_xy(char *info, int option, t_game *g);
+static char	**sl_valid_file(char *str_map, int fd, t_game *g);
 
 t_map	*sl_map_init(char *filename, t_game *g)
 {
@@ -46,12 +47,37 @@ char	**sl_load_map(char *filename, t_game *g)
 	if (str_map[0] != '1')
 	{
 		close(fd);
-		error_and_exit(TRUE, "Map content error HERE\n", g);
+		g->map = NULL;
+		error_and_exit(TRUE, "Map content error\n", g);
 	}
-	res = ft_split(str_map, '\n');
+	res = sl_valid_file(str_map, fd, g);
 	close (fd);
 	free(str_map);
 	return (res);
+}
+
+static char	**sl_valid_file(char *str_map, int fd, t_game *g)
+{
+	int		i;
+
+	i = 0;
+	if (str_map[0] == 0 || str_map[0] == '\n')
+	{
+		close(fd);
+		g->map = NULL;
+		error_and_exit(TRUE, "Map content error\n", g);
+	}
+	while (str_map[i] && str_map[i + 1])
+	{
+		if (str_map[i] == '\n' && str_map[i + 1] == '\n')
+		{
+			close(fd);
+			g->map = NULL;
+			error_and_exit(TRUE, "Map content error\n", g);
+		}
+		i++;
+	}
+	return (ft_split(str_map, '\n'));
 }
 
 static char	*sl_read_fd(int fd, t_game *g)
@@ -67,7 +93,7 @@ static char	*sl_read_fd(int fd, t_game *g)
 	while (bytes_read > 0)
 	{
 		bytes_read = read(fd, buffer, 100);
-		if (bytes_read < 0 || bytes_read == 1)
+		if (bytes_read < 0)
 			error_and_exit(TRUE, "Read file error\n", g);
 		buffer[bytes_read] = '\0';
 		aux = str_map;

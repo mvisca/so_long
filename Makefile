@@ -6,7 +6,7 @@
 #    By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/27 12:07:44 by mvisca            #+#    #+#              #
-#    Updated: 2023/09/14 11:46:51 by mvisca-g         ###   ########.fr        #
+#    Updated: 2023/09/14 12:58:26 by mvisca-g         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -80,7 +80,7 @@ libft:
 
 .build/%.o: src/%.c $(HEADERS) $(MLX) $(LIBFT) Makefile
 	@mkdir -p .build
-	@$(CC) -MMD $< -c -o $@
+	@$(CC) $(DEBUG) -MMD $< -c -o $@
 	@echo "$(GREEN)Creating... $(NC)$(notdir $<) $(RED)-> $(NC)$(notdir $@)"
 
 -include $(DEP)
