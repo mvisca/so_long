@@ -6,7 +6,7 @@
 /*   By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 20:10:23 by mvisca            #+#    #+#             */
-/*   Updated: 2023/09/05 16:13:25 by mvisca-g         ###   ########.fr       */
+/*   Updated: 2023/09/14 11:12:09 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static int	sl_same_len_cols(t_game *g)
 	len = ft_strlen(g->map->tiles[0]);
 	while (r < g->map->r)
 	{
-		if (len != ft_strlen(g->map->tiles[r]))
+		if (len != (int)ft_strlen(g->map->tiles[r]))
 			return (FALSE);
 		r++;
 	}

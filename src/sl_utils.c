@@ -6,7 +6,7 @@
 /*   By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 19:52:40 by mvisca            #+#    #+#             */
-/*   Updated: 2023/09/05 15:55:25 by mvisca-g         ###   ########.fr       */
+/*   Updated: 2023/09/14 11:10:49 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ void	sl_freemap(t_game *g, t_map **map);
 
 void	error_and_exit(int msj, char *str, t_game *g)
 {
-	int	i;
-
 	if (msj)
 		ft_printf("%s", str);
 	if (g->img)

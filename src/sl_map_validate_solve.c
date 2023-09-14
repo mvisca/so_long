@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/25 10:02:38 by mvisca            #+#    #+#             */
-/*   Updated: 2023/08/27 11:32:21 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/09/14 11:12:38 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ int	sl_solvable(t_game *g)
 {
 	int		pr;
 	int		pc;
-	int		r;
 	t_map	*map;
 
 	sl_find_pyr(g, &pr, &pc);

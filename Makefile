@@ -6,7 +6,7 @@
 #    By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/27 12:07:44 by mvisca            #+#    #+#              #
-#    Updated: 2023/08/28 19:56:12 by mvisca-g         ###   ########.fr        #
+#    Updated: 2023/09/14 11:27:25 by mvisca-g         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,70 +14,91 @@
 
 # // cc main.c -Lmlx/minilibx-linux -lmlx_Linux -L/usr/lib -Imlx/minilibx-linux -lXext -lX11 -lm -lz -o prog
 
-#---------- TARGET ---------------------#
+#---------- FORMAT ----------------------#
 
-NAME	:=	so_long
+RED			:= \033[0;31m
+GREEN		:= \033[0;32m
+YELLOW		:= \033[0;33m
+BLUE		:= \033[0;34m
+NC			:= \033[0m
 
-#---------- INGREDIENTS -----------------#
+#---------- TARGET ----------------------#
 
-SRC		:=	src/so_long.c \
-			src/sl_init.c \
-			src/sl_utils.c \
-			src/sl_map_init.c \
-			src/sl_map_show.c \
-			src/sl_map_validate.c \
-			src/sl_map_validate_solve.c \
-			src/sl_game_move.c \
-			src/sl_game_run.c
+NAME		:=	so_long
 
-LIBFT	:=	libft
+#---------- FILES & DIRS ----------------#
 
-DEBUG	:=	-g -fsanitize=address
+SRC			:= src/so_long.c \
+			   src/sl_init.c \
+			   src/sl_utils.c \
+			   src/sl_map_init.c \
+			   src/sl_map_show.c \
+			   src/sl_map_validate.c \
+			   src/sl_map_validate_solve.c \
+			   src/sl_game_move.c \
+			   src/sl_game_run.c
 
-#---------- INGREDIENTS -----------------#
+OBJ			:= $(addprefix .build/, $(notdir $(SRC:.c=.o)))
+DEP			:= $(OBJ:.o=.d)
 
-CC		:=	cc
+HEADERS		:= include/sl_defines.h \
+			   include/sl_types.h \
+			   include/so_long.h
 
-ifeq ($(shell uname -s),Darwin)  # macOS
-	OSFLAGS := -Lmlx/minilibx -lmlx -Imlx/minilibx -framework OpenGl -framework AppKit
-	OSMLX	:= mlx/minilibx
-else ifeq ($(shell uname -s),Linux)  # Linux
-	OSFLAGS := -Lmlx/minilibx-linux -lmlx_Linux -L/usr/lib -Imlx/minilibx-linux -lXext -lX11 -lm -lz
-	OSMLX	:= mlx/minilibx-linux
-else
-	$(error Sistema operativo no compatible)
-endif
+LFTDIR		:= libs/libft/
+MLXDIR		:= libs/minilibx/
 
-LIBFTFLAGS	:=	-Llibft -lft -Ilibft/include
+#---------- LIBS ------------------------#
 
-#---------- OS SPECIFIC FLAGS ----------#
+LIBFT		:= $(LFTDIR)libft.a
+MLX			:= $(MLXDIR)libmlx.a
 
-all: callforlib $(NAME)
+#---------- INGREDIENTS ---------------------#
 
-$(NAME): $(MLX) $(LIBFT)
-	$(CC) $(SRC) $(OSFLAGS) $(LIBFTFLAGS) $(DEBUG) -o $(NAME)
+CC			:= cc -Wall -Wextra -Werror
 
-$(MLX):
-	@$(MAKE) -C $(OSMLX) --silent
+DEBUG		:= -g -fsanitize=address
+
+MLXFLAGS 	:= -L$(MLXDIR) -lmlx -I$(MLXDIR)include -framework OpenGl -framework AppKit
+
+LFTFLAGS	:= -L$(LFTDIR) -lft -I$(LFTDIR)include
+
+#---------- RECIPES ---------------------#
+
+all: mlx libft $(NAME) | callforlib
+
+$(NAME): $(OBJ) $(HEADERS)
+	@$(CC) $(SRC) $(MLXFLAGS) $(LFTFLAGS) -o $(NAME)
+	@echo "$(YELLOW)Packing $(RED)$(NAME) $(YELLOW)ready!$(NC)"
+
+mlx:
+	@$(MAKE) -C $(MLXDIR) --silent
 	
-$(LIBFT):
-	@$(MAKE) -C $(LIBFT) --silent
+libft:
+	@$(MAKE) -C $(LFTDIR) --silent
 
-callforlib:
-	@$(MAKE) -C $(OSMLX) --silent
-	@$(MAKE) -C $(LIBFT) --silent
+.build/%.o: src/%.c $(HEADERS) $(MLX) $(LIBFT) Makefile
+	@mkdir -p .build
+	@$(CC) -MMD $< -c -o $@
+	@echo "$(GREEN)Creating... $(NC)$(notdir $<) $(RED)-> $(NC)$(notdir $@)"
+
+-include $(DEP)
+
+#---------- OTHERS -----------------------#
+
+callforlib: mlx libft
+
+show_obj:
+	echo "$(OBJ)"
 
 clean:
-	@$(MAKE) -C $(OSMLX) clean --silent
-	@$(MAKE) -C $(LIBFT) clean --silent
+	@$(MAKE) -C $(MLXDIR) clean --silent
+	@$(MAKE) -C $(LFTDIR) clean --silent
 
 fclean: clean
-	@rm -rf so_long test --silent
-	@$(MAKE) -C $(LIBFT) fclean --silent
+	@rm -rf so_long
+	@$(MAKE) -C $(LFTDIR) fclean --silent
 
 re: fclean all
 
-test:
-	$(CC) src/lib_test.c $(OSFLAGS) $(DEBUG) -o test
-
-.PHONY: clean fclean re test
+.PHONY: clean fclean re

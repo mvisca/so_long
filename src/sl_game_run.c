@@ -6,15 +6,13 @@
 /*   By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/26 14:19:51 by mvisca            #+#    #+#             */
-/*   Updated: 2023/08/28 20:33:48 by mvisca-g         ###   ########.fr       */
+/*   Updated: 2023/09/14 11:19:39 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-// static int  sl_handle_no_event(void *data);
 static int	sl_handle_arrows(int keysym, t_game *g);
-static int	sl_handle_end(int keysym, t_game *g);
 void		sl_game_end(t_game *g);
 
 void	sl_run_game(t_game *g)
@@ -38,14 +36,6 @@ static int	sl_handle_arrows(int keysym, t_game *g)
 	else if (keysym == ESC)
 		sl_game_end(g);
 
-	return (FALSE);
-}
-
-static int	sl_handle_end(int keysym, t_game *g)
-{
-	// mlx_destroy_window(g->mlx, 0);
-	// g->win = NULL;
-	error_and_exit(FALSE, "", g);
 	return (FALSE);
 }
 
