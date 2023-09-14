@@ -6,7 +6,7 @@
 /*   By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 20:10:23 by mvisca            #+#    #+#             */
-/*   Updated: 2023/09/14 11:12:09 by mvisca-g         ###   ########.fr       */
+/*   Updated: 2023/09/14 12:01:43 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ t_map	*sl_map_validate(t_game *g)
 {
 	if (g->map->c == g->map->r || !sl_same_len_cols(g))
 		error_and_exit(TRUE, "Map dimensions error\n", g);
+	if (!g->map->tiles[0][0])
+		error_and_exit(TRUE, "Empty file\n", g);
 	if (!sl_map_wall_borders(g))
 		error_and_exit(TRUE, "Map borders error\n", g);
 	if (!sl_proper_elements(g))

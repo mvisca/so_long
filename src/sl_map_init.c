@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sl_map_init.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 11:17:49 by mvisca            #+#    #+#             */
-/*   Updated: 2023/08/27 11:46:19 by mvisca           ###   ########.fr       */
+/*   Updated: 2023/09/14 12:37:02 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,11 @@ char	**sl_load_map(char *filename, t_game *g)
 		exit(EXIT_FAILURE);
 	}
 	str_map = sl_read_fd(fd, g);
+	if (str_map[0] != '1')
+	{
+		close(fd);
+		error_and_exit(TRUE, "Map content error HERE\n", g);
+	}
 	res = ft_split(str_map, '\n');
 	close (fd);
 	free(str_map);
@@ -62,7 +67,7 @@ static char	*sl_read_fd(int fd, t_game *g)
 	while (bytes_read > 0)
 	{
 		bytes_read = read(fd, buffer, 100);
-		if (bytes_read < 0)
+		if (bytes_read < 0 || bytes_read == 1)
 			error_and_exit(TRUE, "Read file error\n", g);
 		buffer[bytes_read] = '\0';
 		aux = str_map;

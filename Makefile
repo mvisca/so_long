@@ -6,7 +6,7 @@
 #    By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/27 12:07:44 by mvisca            #+#    #+#              #
-#    Updated: 2023/09/14 11:27:25 by mvisca-g         ###   ########.fr        #
+#    Updated: 2023/09/14 11:46:51 by mvisca-g         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,7 @@ SRC			:= src/so_long.c \
 			   src/sl_game_run.c
 
 OBJ			:= $(addprefix .build/, $(notdir $(SRC:.c=.o)))
+
 DEP			:= $(OBJ:.o=.d)
 
 HEADERS		:= include/sl_defines.h \
@@ -94,6 +95,7 @@ show_obj:
 clean:
 	@$(MAKE) -C $(MLXDIR) clean --silent
 	@$(MAKE) -C $(LFTDIR) clean --silent
+	@rm -rf .build
 
 fclean: clean
 	@rm -rf so_long

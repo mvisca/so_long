@@ -6,7 +6,7 @@
 /*   By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/26 14:19:51 by mvisca            #+#    #+#             */
-/*   Updated: 2023/09/14 11:19:39 by mvisca-g         ###   ########.fr       */
+/*   Updated: 2023/09/14 11:58:12 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ static int	sl_handle_arrows(int keysym, t_game *g)
 		sl_move(0, 1, g);
 	else if (keysym == ESC)
 		sl_game_end(g);
-
 	return (FALSE);
 }
 
