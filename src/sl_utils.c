@@ -6,7 +6,7 @@
 /*   By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 19:52:40 by mvisca            #+#    #+#             */
-/*   Updated: 2023/09/18 16:05:45 by mvisca-g         ###   ########.fr       */
+/*   Updated: 2023/09/14 12:59:54 by mvisca-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ void	error_and_exit(int msj, char *str, t_game *g)
 {
 	if (msj)
 		ft_printf("%s", str);
+	if (g->img)
+		free_img(g);
 	if (g->win)
 	{
 		mlx_destroy_window(g->mlx, g->win);
@@ -53,6 +55,30 @@ void	free_map(t_game *g)
 		}
 	}
 	free(g->map->tiles);
+}
+
+void	free_img(t_game *g)
+{
+	if (g->img && g->img[road])
+	{
+		mlx_destroy_image(g->mlx, g->img[road]->ptr);
+		g->img[road]->ptr = NULL;
+		free(g->img[road]);
+		mlx_destroy_image(g->mlx, g->img[wall]->ptr);
+		g->img[wall]->ptr = NULL;
+		free(g->img[wall]);
+		mlx_destroy_image(g->mlx, g->img[coll]->ptr);
+		g->img[coll]->ptr = NULL;
+		free(g->img[coll]);
+		mlx_destroy_image(g->mlx, g->img[goal]->ptr);
+		g->img[goal]->ptr = NULL;
+		free(g->img[goal]);
+		mlx_destroy_image(g->mlx, g->img[pyr]->ptr);
+		g->img[pyr]->ptr = NULL;
+		free(g->img[pyr]);
+		free(g->img);
+		g->img = NULL;
+	}
 }
 
 void	sl_freemap(t_game *g, t_map **map)

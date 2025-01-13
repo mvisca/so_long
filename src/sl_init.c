@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sl_init.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 18:08:53 by mvisca            #+#    #+#             */
-/*   Updated: 2023/09/18 13:37:06 by mvisca-g         ###   ########.fr       */
+/*   Updated: 2023/08/27 11:54:42 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@ void	sl_init(char *filename, t_game *g)
 {
 	if (!sl_valid_filename(filename))
 		error_and_exit(TRUE, "Filename error\n", g);
-	g->map = sl_map_init(filename, g);
-	if (!g->map)
-		error_and_exit(TRUE, "Map error\n", g);
 	g->mlx = mlx_init();
 	if (!g->mlx)
 		error_and_exit(TRUE, "Display error\n", g);
+	g->map = sl_map_init(filename, g);
+	if (!g->map)
+		error_and_exit(TRUE, "Map error\n", g);
 	g->win = mlx_new_window(g->mlx, g->map->c * 32, g->map->r * 32, "So Long");
 	if (!g->win)
 		error_and_exit(TRUE, "Window error\n", g);

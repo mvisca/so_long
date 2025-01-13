@@ -6,7 +6,7 @@
 /*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/26 17:52:09 by mvisca            #+#    #+#             */
-/*   Updated: 2023/08/27 11:35:00 by mvisca           ###   ########.fr       */
+/*   Updated: 2025/01/10 19:13:58 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,10 @@ void	sl_move(int r_move, int c_move, t_game *g)
 	if (dest == '0')
 		g->map->tiles[g->p_r + r_move][g->p_c + c_move] = 'P';
 	else if (dest == 'C')
-		g->map->tiles[g->p_r + r_move][g->p_c + c_move] = 'P' \
-		+ g->map->coll - g->map->coll--;
+	{
+		g->map->tiles[g->p_r + r_move][g->p_c + c_move] = 'P';
+		g->map->coll--;
+	}	
 	else if (dest == 'E' && g->map->coll > 0)
 		g->map->tiles[g->p_r + r_move][g->p_c + c_move] = 'B';
 	else if (dest == 'E' && g->map->coll == 0)

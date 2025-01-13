@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sl_game_run.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvisca-g <mvisca-g@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mvisca <mvisca@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/26 14:19:51 by mvisca            #+#    #+#             */
-/*   Updated: 2023/09/14 11:58:12 by mvisca-g         ###   ########.fr       */
+/*   Updated: 2025/01/13 13:27:23 by mvisca           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,10 @@ void		sl_game_end(t_game *g);
 void	sl_run_game(t_game *g)
 {
 	mlx_hook(g->win, 17, 0, (void *) sl_game_end, g);
-	mlx_hook(g->win, 2, 0, &sl_handle_arrows, g);
+	mlx_hook(g->win, 1L << 0, 0, &sl_handle_arrows, g);
+	write(1, "in loop\n", 8);
 	mlx_loop(g->mlx);
+	write(1, "out loop\n", 9);
 }
 
 static int	sl_handle_arrows(int keysym, t_game *g)
