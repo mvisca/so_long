@@ -13,18 +13,26 @@
 #ifndef SL_DEFINES_H
 # define SL_DEFINES_H
 
-# define ESC 53
-# define ARRL 123
-# define ARRR 124
-# define ARRU 126
-# define ARRD 125
-# define A 0
-# define W 13
-# define S 1
-# define D 2
-# define KP 2
-# define KR 17
-# define KPM 0
+// Tecla ESC
+# define ESC 65307  // Correcto en X11
+
+// Flechas de dirección
+# define ARRL 65361  // Flecha izquierda
+# define ARRR 65363  // Flecha derecha
+# define ARRU 65362  // Flecha arriba
+# define ARRD 65364  // Flecha abajo
+
+// Teclas WASD
+# define A 97   // 'A' en X11
+# define W 119  // 'W' en X11
+# define S 115  // 'S' en X11
+# define D 100  // 'D' en X11
+
+// Otras teclas (ajustar según necesidad)
+# define KP 50  // Teclado numérico (ejemplo)
+# define KR 114 // Otra tecla (ejemplo)
+
+// Eliminar la duplicación de KPM
 # define KPM 0
 
 #endif

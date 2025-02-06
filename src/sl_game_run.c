@@ -18,7 +18,7 @@ void		sl_game_end(t_game *g);
 void	sl_run_game(t_game *g)
 {
 	mlx_hook(g->win, 17, 0, (void *) sl_game_end, g);
-	mlx_hook(g->win, 1L << 0, 0, &sl_handle_arrows, g);
+	mlx_hook(g->win, 2, 1L << 0, sl_handle_arrows, g);
 	write(1, "in loop\n", 8);
 	mlx_loop(g->mlx);
 	write(1, "out loop\n", 9);

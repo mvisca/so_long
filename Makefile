@@ -60,7 +60,8 @@ CC			:= cc -Wall -Wextra -Werror
 
 DEBUG		:= -g -fsanitize=address
 
-MLXFLAGS 	:= -L$(MLXDIR) -lmlx -I$(MLXDIR)include -framework OpenGl -framework AppKit
+MLXFLAGS 	:= -L$(MLXDIR) -lmlx_Linux -L/usr/lib -I$(MLXDIR) \
+			   -lXext -lX11 -lm -lz 
 
 LFTFLAGS	:= -L$(LFTDIR) -lft -I$(LFTDIR)include
 
